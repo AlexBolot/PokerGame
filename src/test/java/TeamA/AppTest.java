@@ -22,10 +22,10 @@ public class AppTest extends TestCase
     /**
      @return the suite of tests being tested
      */
-    public static Test suite ()
+   /* public static Test suite ()
     {
-        return new TestSuite(AppTest.class);
-    }
+        return new TestSuite(AppTest.TeamA.class);
+    }*/
     
     /**
      Rigourous Test :-)
