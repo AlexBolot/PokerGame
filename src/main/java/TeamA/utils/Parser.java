@@ -1,15 +1,5 @@
 package TeamA.utils;
 
-/*................................................................................................................................
- . Copyright (c)
- .
- . The Parser	 Class was Coded by : Alexandre BOLOT
- .
- . Last Modified : 23/09/17 14:34
- .
- . Contact : bolotalex06@gmail.com
- ...............................................................................................................................*/
-
 import TeamA.classe.Card;
 import TeamA.classe.Hand;
 
@@ -17,6 +7,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
+
+/*................................................................................................................................
+ . Copyright (c)
+ .
+ . The Parser	 Class was Coded by : Team_A
+ .
+ . Members :
+ . -> Alexandre Bolot
+ . -> Mathieu Paillart
+ . -> Grégoire Peltier
+ . -> Théos Mariani
+ .
+ . Last Modified : 23/09/17 16:42
+ ...............................................................................................................................*/
 
 public abstract class Parser
 {

@@ -7,11 +7,15 @@ import java.util.ArrayList;
 /*................................................................................................................................
  . Copyright (c)
  .
- . The QuiteFlush	 Class was Coded by : Alexandre BOLOT
+ . The QuiteFlush	 Class was Coded by : Team_A
  .
- . Last Modified : 23/09/17 15:28
+ . Members :
+ . -> Alexandre Bolot
+ . -> Mathieu Paillart
+ . -> Grégoire Peltier
+ . -> Théos Mariani
  .
- . Contact : bolotalex06@gmail.com
+ . Last Modified : 23/09/17 16:42
  ...............................................................................................................................*/
 
 public class QuiteFlush extends Combination

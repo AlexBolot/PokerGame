@@ -1,10 +1,22 @@
 package TeamA;
 
-import TeamA.classe.Card;
 import TeamA.classe.Hand;
 
 import static TeamA.utils.Parser.readCards;
-import static java.lang.Integer.parseInt;
+
+/*................................................................................................................................
+ . Copyright (c)
+ .
+ . The App	 Class was Coded by : Team_A
+ .
+ . Members :
+ . -> Alexandre Bolot
+ . -> Mathieu Paillart
+ . -> Grégoire Peltier
+ . -> Théos Mariani
+ .
+ . Last Modified : 23/09/17 16:42
+ ...............................................................................................................................*/
 
 /**
  Hello world!

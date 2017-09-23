@@ -1,8 +1,20 @@
 package TeamA;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
+
+/*................................................................................................................................
+ . Copyright (c)
+ .
+ . The AppTest	 Class was Coded by : Team_A
+ .
+ . Members :
+ . -> Alexandre Bolot
+ . -> Mathieu Paillart
+ . -> Grégoire Peltier
+ . -> Théos Mariani
+ .
+ . Last Modified : 23/09/17 16:42
+ ...............................................................................................................................*/
 
 /**
  Unit test for simple App.

@@ -7,11 +7,15 @@ import java.util.ArrayList;
 /*................................................................................................................................
  . Copyright (c)
  .
- . The Couleur	 Class was Coded by : Alexandre BOLOT
+ . The Couleur	 Class was Coded by : Team_A
  .
- . Last Modified : 23/09/17 15:23
+ . Members :
+ . -> Alexandre Bolot
+ . -> Mathieu Paillart
+ . -> Grégoire Peltier
+ . -> Théos Mariani
  .
- . Contact : bolotalex06@gmail.com
+ . Last Modified : 23/09/17 16:42
  ...............................................................................................................................*/
 
 public class Couleur extends Combination
