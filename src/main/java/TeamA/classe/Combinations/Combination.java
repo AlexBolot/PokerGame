@@ -1,8 +1,10 @@
-package TeamA.classe;
+package TeamA.classe.Combinations;
+
+import TeamA.classe.Card;
 
 import java.util.ArrayList;
 
-public abstract class Combination {
+abstract public class Combination implements Comparable<Combination> {
     private ArrayList<Card> hand = new ArrayList<Card>();
     private String name;
     private int value;
@@ -37,5 +39,12 @@ public abstract class Combination {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    @Override
+    public int compareTo(Combination o) {
+        return Integer.compare(this.value,o.value);
+
+
     }
 }

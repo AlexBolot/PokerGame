@@ -1,20 +1,22 @@
-package TeamA.classe;
+package TeamA.classe.Combinations;
+
+import TeamA.classe.Card;
 
 import java.util.ArrayList;
 
 /*................................................................................................................................
  . Copyright (c)
  .
- . The QuiteFlush	 Class was Coded by : Alexandre BOLOT
+ . The Full	 Class was Coded by : Alexandre BOLOT
  .
- . Last Modified : 23/09/17 15:28
+ . Last Modified : 23/09/17 15:27
  .
  . Contact : bolotalex06@gmail.com
  ...............................................................................................................................*/
 
-public class QuiteFlush extends Combination
+public class Full extends Combination
 {
-    public QuiteFlush (ArrayList<Card> hand)
+    public Full (ArrayList<Card> hand)
     {
         super(hand);
     }

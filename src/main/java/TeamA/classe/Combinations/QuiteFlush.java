@@ -1,20 +1,22 @@
-package TeamA.classe;
+package TeamA.classe.Combinations;
+
+import TeamA.classe.Card;
 
 import java.util.ArrayList;
 
 /*................................................................................................................................
  . Copyright (c)
  .
- . The PlusHauteCarte	 Class was Coded by : Alexandre BOLOT
+ . The QuiteFlush	 Class was Coded by : Alexandre BOLOT
  .
- . Last Modified : 23/09/17 15:18
+ . Last Modified : 23/09/17 15:28
  .
  . Contact : bolotalex06@gmail.com
  ...............................................................................................................................*/
 
-public class PlusHauteCarte extends Combination
+public class QuiteFlush extends Combination
 {
-    public PlusHauteCarte (ArrayList<Card> hand)
+    public QuiteFlush (ArrayList<Card> hand)
     {
         super(hand);
     }

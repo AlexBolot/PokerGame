@@ -11,7 +11,6 @@ package TeamA.utils;
  ...............................................................................................................................*/
 
 import TeamA.classe.Card;
-import TeamA.classe.Combination;
 import TeamA.classe.Hand;
 
 import java.util.ArrayList;

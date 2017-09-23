@@ -1,20 +1,22 @@
-package TeamA.classe;
+package TeamA.classe.Combinations;
+
+import TeamA.classe.Card;
 
 import java.util.ArrayList;
 
 /*................................................................................................................................
  . Copyright (c)
  .
- . The Suite	 Class was Coded by : Alexandre BOLOT
+ . The Brelan	 Class was Coded by : Alexandre BOLOT
  .
  . Last Modified : 23/09/17 15:23
  .
  . Contact : bolotalex06@gmail.com
  ...............................................................................................................................*/
 
-public class Suite extends Combination
+public class Brelan extends Combination
 {
-    public Suite (ArrayList<Card> hand)
+    public Brelan (ArrayList<Card> hand)
     {
         super(hand);
     }

@@ -1,20 +1,22 @@
-package TeamA.classe;
+package TeamA.classe.Combinations;
+
+import TeamA.classe.Card;
 
 import java.util.ArrayList;
 
 /*................................................................................................................................
  . Copyright (c)
  .
- . The Couleur	 Class was Coded by : Alexandre BOLOT
+ . The Paire	 Class was Coded by : Alexandre BOLOT
  .
  . Last Modified : 23/09/17 15:23
  .
  . Contact : bolotalex06@gmail.com
  ...............................................................................................................................*/
 
-public class Couleur extends Combination
+public class Paire extends Combination
 {
-    public Couleur (ArrayList<Card> hand)
+    public Paire (ArrayList<Card> hand)
     {
         super(hand);
     }

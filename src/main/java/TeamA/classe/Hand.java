@@ -1,5 +1,8 @@
 package TeamA.classe;
 
+import TeamA.classe.Combinations.Combination;
+import TeamA.classe.Combinations.PlusHauteCarte;
+
 import java.util.ArrayList;
 
 public class Hand {
