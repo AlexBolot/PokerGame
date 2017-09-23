@@ -2,7 +2,7 @@ package TeamA.classe;
 
 import java.util.ArrayList;
 
-public class Combination {
+public abstract class Combination {
     private ArrayList<Card> hand = new ArrayList<Card>();
     private String name;
     private int value;

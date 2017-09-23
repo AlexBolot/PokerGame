@@ -35,10 +35,5 @@ public class Comparator
         return 0;
     }
 
-    public static Combination findBestCombination (ArrayList<Card> cards)
-    {
-        //TODO
-        return null;
-    }
 
 }
