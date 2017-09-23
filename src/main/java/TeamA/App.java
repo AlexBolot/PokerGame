@@ -1,6 +1,7 @@
 package TeamA;
 
 import TeamA.classe.Card;
+import TeamA.classe.Hand;
 
 import static TeamA.utils.Parser.readCards;
 import static java.lang.Integer.parseInt;
@@ -14,7 +15,15 @@ public class App
     {
 
         System.out.println("Hello team A!");
-        readCards();
+        Hand hand1, hand2;
+        hand1 = readCards();
+        hand2 = readCards();
+
+        // TODO afficher qu'elle main a la carte la plus haute
+
+        System.out.println(hand1.toString());
+        System.out.println(hand2.toString());
+
 
     }
 }
