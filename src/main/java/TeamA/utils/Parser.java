@@ -12,6 +12,7 @@ package TeamA.utils;
 
 import TeamA.classe.Card;
 import TeamA.classe.Combination;
+import TeamA.classe.Hand;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -40,23 +41,19 @@ public abstract class Parser
     {
         //Initialisation des variables
         String[] tabMain1, tabMain2;
-        ArrayList<Card> hand1, hand2;
-
+        Hand hand1, hand2;
         tabMain1 = main1.split(" ");
         tabMain2 = main2.split(" ");
 
-        // creation des objets Card et des objets combinations
-        System.out.print("main1 : ");
+        hand1 = new Hand(getCard(tabMain1));
+        hand2 = new Hand(getCard(tabMain2));
 
-        hand1 = getCard(tabMain1);
-        hand2 = getCard(tabMain2);
     }
     public static ArrayList<Card> getCard(String[] tab){
         Card c;
         String card;
         ArrayList<Card> hand = new ArrayList<Card>();
         for(int i=0; i<5; i++){
-            System.out.print(tab[i] +"-");
             card = tab[i].substring(0,1);
             c = new Card(parseInt(card), tab[i]);
             hand.add(c);
