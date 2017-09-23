@@ -11,4 +11,5 @@ public class Combination {
         this.name = name;
         this.value = value;
     }
+
 }
