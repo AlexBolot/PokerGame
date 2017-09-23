@@ -15,7 +15,7 @@ public class Hand {
     public void setHand(ArrayList<Card> hand) {
         this.hand = hand;
     }
-    public static Combination findBestCombination (ArrayList<Card> cards)
+    public static Combination findBestCombination ()
     {
         //TODO
         return null;
