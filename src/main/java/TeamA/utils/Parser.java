@@ -19,7 +19,7 @@ import static java.lang.Integer.parseInt;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 24/09/17 01:20
  ...............................................................................................................................*/
 
 public abstract class Parser
@@ -33,19 +33,26 @@ public abstract class Parser
         return parseCards(main);
     }
 
-    public static Hand parseCards (String main)
+    private static Hand parseCards (String main)
     {
         String[] tabMain;
         tabMain = main.split(" ");
         return new Hand(getCard(tabMain));
     }
-    public static ArrayList<Card> getCard(String[] tab){
+
+    private static ArrayList<Card> getCard (String[] tab)
+    {
         Card c;
         String card;
-        ArrayList<Card> hand = new ArrayList<Card>();
-        for(int i=0; i<5; i++){
-            card = tab[i].substring(0,1);
-            c = new Card(parseInt(card), tab[i]);
+        ArrayList<Card> hand = new ArrayList<>();
+        for (int i = 0; i < 5; i++)
+        {
+            card = tab[i];
+            c = new Card(parseInt(card), "");
+
+            //Will be used in next release.
+            //card = tab[i].substring(0, 1);
+            //c = new Card(parseInt(card), tab[i].substring(1,3));
             hand.add(c);
         }
         return hand;

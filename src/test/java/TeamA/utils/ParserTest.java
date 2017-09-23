@@ -22,7 +22,7 @@ import java.util.Random;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 19:06
+ . Last Modified : 24/09/17 01:19
  ...............................................................................................................................*/
 
 public class ParserTest
@@ -36,10 +36,10 @@ public class ParserTest
     {
         for (int i = 1; i < 14; i++)
         {
-            allCards.add(new Card(i, "Co"));
-            allCards.add(new Card(i, "Ca"));
-            allCards.add(new Card(i, "Tr"));
-            allCards.add(new Card(i, "Pi"));
+            allCards.add(new Card(i, ""));
+            allCards.add(new Card(i, ""));
+            allCards.add(new Card(i, ""));
+            allCards.add(new Card(i, ""));
         }
     }
 
