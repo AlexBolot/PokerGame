@@ -40,31 +40,27 @@ public abstract class Parser
     {
         //Initialisation des variables
         String[] tabMain1, tabMain2;
-        String card;
-        Card c;
-        ArrayList<Card> hand = new ArrayList<Card>();
-        Combination Combination1, Combination2;
+        ArrayList<Card> hand1, hand2;
 
         tabMain1 = main1.split(" ");
         tabMain2 = main2.split(" ");
 
         // creation des objets Card et des objets combinations
         System.out.print("main1 : ");
-        for(int i=0; i<5; i++){
-            System.out.print(tabMain1[i] +"-");
-            card = tabMain1[i].substring(0,1);
-            c = new Card(parseInt(card), tabMain1[i]);
-            hand.add(c);
-        }
-        Combination1 = new Combination(hand);
 
+        hand1 = getCard(tabMain1);
+        hand2 = getCard(tabMain2);
+    }
+    public static ArrayList<Card> getCard(String[] tab){
+        Card c;
+        String card;
+        ArrayList<Card> hand = new ArrayList<Card>();
         for(int i=0; i<5; i++){
-            System.out.print(tabMain2[i]+"-");
-            card = tabMain2[i].substring(0,1);
-            c = new Card(parseInt(card), tabMain2[i]);
+            System.out.print(tab[i] +"-");
+            card = tab[i].substring(0,1);
+            c = new Card(parseInt(card), tab[i]);
             hand.add(c);
         }
-        Combination1 = new Combination(hand);
-        System.out.println("\nmain2 : " + main2);
+        return hand;
     }
 }
