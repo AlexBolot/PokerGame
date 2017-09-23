@@ -1,3 +1,13 @@
+<!--..............................................................................................................................
+  . Copyright (c)
+  .
+  . The pom.xml	 Class was Coded by : Alexandre BOLOT
+  .
+  . Last Modified : 23/09/17 15:31
+  .
+  . Contact : bolotalex06@gmail.com
+  .............................................................................................................................-->
+
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -18,7 +28,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
