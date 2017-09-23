@@ -11,7 +11,9 @@ package TeamA.utils;
  ...............................................................................................................................*/
 
 import TeamA.classe.Card;
+import TeamA.classe.Combination;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
@@ -40,6 +42,8 @@ public abstract class Parser
         String[] tabMain1, tabMain2;
         String card;
         Card c;
+        ArrayList<Card> hand = new ArrayList<Card>();
+        Combination Combination1, Combination2;
 
         tabMain1 = main1.split(" ");
         tabMain2 = main2.split(" ");
@@ -50,9 +54,17 @@ public abstract class Parser
             System.out.print(tabMain1[i] +"-");
             card = tabMain1[i].substring(0,1);
             c = new Card(parseInt(card), tabMain1[i]);
+            hand.add(c);
         }
+        Combination1 = new Combination(hand);
 
-        //System.out.println("main1 : " + main1);
+        for(int i=0; i<5; i++){
+            System.out.print(tabMain2[i]+"-");
+            card = tabMain2[i].substring(0,1);
+            c = new Card(parseInt(card), tabMain2[i]);
+            hand.add(c);
+        }
+        Combination1 = new Combination(hand);
         System.out.println("\nmain2 : " + main2);
     }
 }
