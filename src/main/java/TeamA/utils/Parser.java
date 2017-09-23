@@ -22,32 +22,19 @@ import static java.lang.Integer.parseInt;
 public abstract class Parser
 {
 
-    public static void readCards ()
+    public static Hand readCards ()
     {
-        //Initialisation des variables
         Scanner sc = new Scanner(System.in);
-
-
-        System.out.println("Entrez les 5 cartes de la première main");
-        String main1 = sc.nextLine();
-        System.out.println("Entrez les 5 cartes de la deuxième main");
-        String main2 = sc.nextLine();
-
-        parseCards(main1, main2);
-
+        System.out.println("Entrez 5 cartes (cad un chiffre de 1 à 10 et une lettre pour la couleur)");
+        String main = sc.nextLine();
+        return parseCards(main);
     }
 
-    public static void parseCards (String main1, String main2)
+    public static Hand parseCards (String main)
     {
-        //Initialisation des variables
-        String[] tabMain1, tabMain2;
-        Hand hand1, hand2;
-        tabMain1 = main1.split(" ");
-        tabMain2 = main2.split(" ");
-
-        hand1 = new Hand(getCard(tabMain1));
-        hand2 = new Hand(getCard(tabMain2));
-
+        String[] tabMain;
+        tabMain = main.split(" ");
+        return new Hand(getCard(tabMain));
     }
     public static ArrayList<Card> getCard(String[] tab){
         Card c;

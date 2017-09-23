@@ -15,10 +15,16 @@ public class Hand {
     public void setHand(ArrayList<Card> hand) {
         this.hand = hand;
     }
-    public static Combination findBestCombination ()
+    public Combination findBestCombination ()
     {
-        //TODO
-        return null;
+        return new PlusHauteCarte(hand);
+    }
+    public String toString(){
+        String affHand = "";
+        for(Card c : hand){
+            affHand += c.getName()+'_';
+        }
+        return affHand;
     }
 
 }
