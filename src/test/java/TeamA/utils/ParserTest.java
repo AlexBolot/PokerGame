@@ -22,14 +22,13 @@ import java.util.Random;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 24/09/17 01:19
+ . Last Modified : 24/09/17 20:46
  ...............................................................................................................................*/
 
 public class ParserTest
 {
     private static ArrayList<Card> allCards = new ArrayList<>();
-    private Hand hand1;
-    private Hand hand2;
+    private Hand hand;
 
     @BeforeClass
     public static void beforeClass ()
@@ -53,33 +52,15 @@ public class ParserTest
             cards1.add(allCards.get(index));
         }
 
-        hand1 = new Hand(cards1);
-
-        ArrayList<Card> cards2 = new ArrayList<>();
-        for (int i = 0; i < 5; i++)
-        {
-            int index = new Random().nextInt(allCards.size());
-            cards2.add(allCards.get(index));
-        }
-
-        hand2 = new Hand(cards2);
+        hand = new Hand(cards1);
     }
 
     @Test
     public void testReadCards () throws Exception
     {
-        StringBuilder str = new StringBuilder();
-
-        for (Card c : hand1.getHand())
-        {
-            str.append(c).append(" ");
-        }
-
-        str.deleteCharAt(str.length() - 1);
-
-        ByteArrayInputStream in = new ByteArrayInputStream(str.toString().getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream(hand.toString().getBytes());
         System.setIn(in);
 
-        Assert.assertEquals(hand1.getHand(), Parser.readCards().getHand());
+        Assert.assertEquals(hand.getHand(), Parser.readCards().getHand());
     }
 }
