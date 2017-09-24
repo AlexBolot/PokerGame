@@ -35,6 +35,16 @@ public class App
 
         System.out.println(hand1.toString());
         System.out.println(hand2.toString());
+        switch(hand1.findBestCombination().compareTo(hand2.findBestCombination())){
+            case 1:
+                System.out.println("La main 1 est gagnante");
+                break;
+            case -1:
+                System.out.println("La main 2 est gagnante");
+                break;
+            case 0:
+                System.out.println("Egalité");
+        }
 
 
     }

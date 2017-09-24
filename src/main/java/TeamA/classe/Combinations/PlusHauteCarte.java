@@ -18,10 +18,27 @@ import java.util.ArrayList;
  . Last Modified : 23/09/17 16:42
  ...............................................................................................................................*/
 
-public class PlusHauteCarte extends Combination
-{
-    public PlusHauteCarte (ArrayList<Card> hand)
-    {
+public class PlusHauteCarte extends Combination {
+   public int compareTo(PlusHauteCarte phc) {
+        int result;
+        ArrayList <Card> reste1 = (ArrayList<Card>) this.getHand().clone();
+        ArrayList <Card> reste2 = (ArrayList<Card>) phc.getHand().clone();
+
+        while (reste1.size()>0 && reste2.size()>0) {
+            result = gethighestcard(reste1).compareTo(gethighestcard(reste2));
+            if (result!=0) {
+                return (result);
+            }
+            reste1.remove(reste1.indexOf(gethighestcard(reste1)));
+            reste2.remove(reste2.indexOf(gethighestcard(reste2)));
+        }
+        return(0);
+   }
+
+    public PlusHauteCarte(ArrayList<Card> hand) {
         super(hand);
+        setValue(0);
     }
+
+
 }

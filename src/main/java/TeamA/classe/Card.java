@@ -27,7 +27,10 @@ public class Card implements Comparable<Card>
 
     public int compareTo (Card card)
     {
-        return Integer.compare(this.value, card.value);
+        if (this.value>card.value){return 1;}
+        if (this.value<card.value){return -1;}
+        return(0);
+        //return Integer.compare(this.value, card.value);
     }
 
     public int getValue ()
