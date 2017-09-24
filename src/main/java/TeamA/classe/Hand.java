@@ -16,7 +16,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 24/09/17 17:26
+ . Last Modified : 24/09/17 21:01
  ...............................................................................................................................*/
 
 public class Hand
@@ -48,7 +48,7 @@ public class Hand
         StringBuilder affHand = new StringBuilder();
         for (Card c : hand)
         {
-            affHand.append(c.getValue()).append(c.getName()).append(" ");
+            affHand.append(c).append(" ");
         }
         return affHand.toString();
     }
