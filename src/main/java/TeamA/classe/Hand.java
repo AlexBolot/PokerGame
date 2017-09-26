@@ -16,32 +16,41 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 24/09/17 21:01
  ...............................................................................................................................*/
 
-public class Hand {
+public class Hand
+{
     private ArrayList<Card> hand = new ArrayList<Card>();
 
-    public Hand(ArrayList<Card> hand){
+    public Hand (ArrayList<Card> hand)
+    {
         this.hand = hand;
     }
 
-    public ArrayList<Card> getHand() {
+    public ArrayList<Card> getHand ()
+    {
         return hand;
     }
-    public void setHand(ArrayList<Card> hand) {
+
+    public void setHand (ArrayList<Card> hand)
+    {
         this.hand = hand;
     }
+
     public Combination findBestCombination ()
     {
         return new PlusHauteCarte(hand);
     }
-    public String toString(){
-        String affHand = "";
-        for(Card c : hand){
-            affHand += c.getName()+'_';
+
+    public String toString ()
+    {
+        StringBuilder affHand = new StringBuilder();
+        for (Card c : hand)
+        {
+            affHand.append(c).append(" ");
         }
-        return affHand;
+        return affHand.toString();
     }
 
 }

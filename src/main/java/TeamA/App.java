@@ -15,7 +15,7 @@ import static TeamA.utils.Parser.readCards;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 24/09/17 17:27
  ...............................................................................................................................*/
 
 /**
@@ -33,8 +33,8 @@ public class App
 
         // TODO afficher qu'elle main a la carte la plus haute
 
-        System.out.println(hand1.toString());
-        System.out.println(hand2.toString());
+        System.out.println("Main 1 : " + hand1.toString());
+        System.out.println("Main 2 : " + hand2.toString());
         switch(hand1.findBestCombination().compareTo(hand2.findBestCombination())){
             case 1:
                 System.out.println("La main 1 est gagnante");
