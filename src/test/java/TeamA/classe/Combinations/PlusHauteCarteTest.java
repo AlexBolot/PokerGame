@@ -18,7 +18,7 @@ import java.util.Arrays;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 26/09/17 08:54
+ . Last Modified : 26/09/17 16:38
  ...............................................................................................................................*/
 
 public class PlusHauteCarteTest
@@ -26,26 +26,29 @@ public class PlusHauteCarteTest
     @Test
     public void compareTo () throws Exception
     {
-        PlusHauteCarte phc1 = new PlusHauteCarte(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+        PlusHauteCarte obj1 = new PlusHauteCarte(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
                                                                                new Card(5, "Co"),
                                                                                new Card(8, "Tr"),
                                                                                new Card(3, "Pi"),
                                                                                new Card(4, "Pi"))));
 
-        PlusHauteCarte phc2 = new PlusHauteCarte(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+        PlusHauteCarte obj2 = new PlusHauteCarte(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
                                                                                new Card(5, "Co"),
                                                                                new Card(7, "Tr"),
                                                                                new Card(3, "Pi"),
                                                                                new Card(4, "Pi"))));
 
-        PlusHauteCarte phc3 = new PlusHauteCarte(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+        PlusHauteCarte obj3 = new PlusHauteCarte(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
                                                                                new Card(5, "Co"),
                                                                                new Card(8, "Tr"),
                                                                                new Card(3, "Pi"),
                                                                                new Card(4, "Pi"))));
 
-        Assert.assertEquals(1, phc1.compareTo(phc2));
-        Assert.assertEquals(-1, phc2.compareTo(phc1));
-        Assert.assertEquals(0, phc1.compareTo(phc3));
+        // obj1 > obj2
+        Assert.assertEquals(1, obj1.compareTo(obj2));
+        // obj2 < obj1
+        Assert.assertEquals(-1, obj2.compareTo(obj1));
+        // obj1 = obj3
+        Assert.assertEquals(0, obj1.compareTo(obj3));
     }
 }

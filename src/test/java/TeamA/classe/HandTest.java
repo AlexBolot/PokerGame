@@ -22,7 +22,7 @@ import static TeamA.TestingUtils.getAllCards;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 26/09/17 08:51
+ . Last Modified : 26/09/17 16:52
  ...............................................................................................................................*/
 
 @SuppressWarnings ("Duplicates")
@@ -152,7 +152,7 @@ public class HandTest
         Assert.assertTrue(hand5.findBestCombination() instanceof Couleur);
         Assert.assertTrue(hand6.findBestCombination() instanceof Full);
         Assert.assertTrue(hand7.findBestCombination() instanceof Carre);
-        Assert.assertTrue(hand8.findBestCombination() instanceof QuiteFlush);*/
+        Assert.assertTrue(hand8.findBestCombination() instanceof QuinteFlush);*/
     }
 
     @Test
