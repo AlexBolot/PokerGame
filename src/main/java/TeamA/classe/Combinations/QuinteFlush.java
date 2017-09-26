@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /*................................................................................................................................
  . Copyright (c)
  .
- . The QuiteFlush	 Class was Coded by : Team_A
+ . The QuinteFlush	 Class was Coded by : Team_A
  .
  . Members :
  . -> Alexandre Bolot
@@ -15,12 +15,12 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 26/09/17 16:52
  ...............................................................................................................................*/
 
-public class QuiteFlush extends Combination
+public class QuinteFlush extends Combination
 {
-    public QuiteFlush (ArrayList<Card> hand)
+    public QuinteFlush (ArrayList<Card> hand)
     {
         super(hand);
     }
