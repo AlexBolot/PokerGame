@@ -4,12 +4,13 @@ import TeamA.classe.Card;
 import TeamA.classe.Hand;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.Random;
+
+import static TeamA.TestingUtils.getAllCards;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -22,25 +23,12 @@ import java.util.Random;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 24/09/17 20:46
+ . Last Modified : 26/09/17 08:43
  ...............................................................................................................................*/
 
 public class ParserTest
 {
-    private static ArrayList<Card> allCards = new ArrayList<>();
     private Hand hand;
-
-    @BeforeClass
-    public static void beforeClass ()
-    {
-        for (int i = 1; i < 14; i++)
-        {
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-        }
-    }
 
     @Before
     public void before ()
@@ -48,8 +36,8 @@ public class ParserTest
         ArrayList<Card> cards1 = new ArrayList<>();
         for (int i = 0; i < 5; i++)
         {
-            int index = new Random().nextInt(allCards.size());
-            cards1.add(allCards.get(index));
+            int index = new Random().nextInt(getAllCards().size());
+            cards1.add(getAllCards().get(index));
         }
 
         hand = new Hand(cards1);

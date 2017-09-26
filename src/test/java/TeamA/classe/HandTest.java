@@ -3,12 +3,13 @@ package TeamA.classe;
 import TeamA.classe.Combinations.PlusHauteCarte;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+
+import static TeamA.TestingUtils.getAllCards;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -21,27 +22,14 @@ import java.util.Random;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 24/09/17 22:03
+ . Last Modified : 26/09/17 08:51
  ...............................................................................................................................*/
 
 @SuppressWarnings ("Duplicates")
 public class HandTest
 {
-    private static ArrayList<Card> allCards = new ArrayList<>();
     private        ArrayList<Card> cards    = new ArrayList<>();
     private Hand hand;
-
-    @BeforeClass
-    public static void beforeClass ()
-    {
-        for (int i = 1; i < 14; i++)
-        {
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-        }
-    }
 
     @Before
     public void before ()
@@ -50,8 +38,8 @@ public class HandTest
 
         for (int i = 0; i < 5; i++)
         {
-            int index = new Random().nextInt(allCards.size());
-            cards.add(allCards.get(index));
+            int index = new Random().nextInt(getAllCards().size());
+            cards.add(getAllCards().get(index));
         }
 
         hand = new Hand(cards);
@@ -70,8 +58,8 @@ public class HandTest
 
         for (int i = 0; i < 5; i++)
         {
-            int index = new Random().nextInt(allCards.size());
-            newCards.add(allCards.get(index));
+            int index = new Random().nextInt(getAllCards().size());
+            newCards.add(getAllCards().get(index));
         }
 
         hand.setHand(newCards);

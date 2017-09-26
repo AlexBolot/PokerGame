@@ -1,11 +1,9 @@
 package TeamA.classe;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Random;
-
+import static TeamA.TestingUtils.getAllCards;
+import static TeamA.TestingUtils.getRandomInt;
 import static org.junit.Assert.*;
 
 /*................................................................................................................................
@@ -19,32 +17,17 @@ import static org.junit.Assert.*;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 24/09/17 22:03
+ . Last Modified : 26/09/17 08:45
  ...............................................................................................................................*/
 
 @SuppressWarnings ("Duplicates")
 public class CardTest
 {
-    private static ArrayList<Card> allCards = new ArrayList<>();
-    private        Random          random   = new Random();
-
-    @BeforeClass
-    public static void beforeClass () throws Exception
-    {
-        for (int i = 1; i < 14; i++)
-        {
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-        }
-    }
-
     @Test
     public void compareTo () throws Exception
     {
-        Card c1 = allCards.get(random.nextInt(allCards.size()));
-        Card c2 = allCards.get(random.nextInt(allCards.size()));
+        Card c1 = getAllCards().get(getRandomInt(getAllCards().size()));
+        Card c2 = getAllCards().get(getRandomInt(getAllCards().size()));
 
         assertEquals(Integer.compare(c1.getValue(), c2.getValue()), c1.compareTo(c2));
     }
@@ -52,10 +35,10 @@ public class CardTest
     @Test
     public void equals () throws Exception
     {
-        int index = random.nextInt(allCards.size());
+        int index = getRandomInt(getAllCards().size());
 
-        Card c1 = allCards.get(index);
-        Card c2 = allCards.get(index);
+        Card c1 = getAllCards().get(index);
+        Card c2 = getAllCards().get(index);
         Card c3 = new Card(c1.getValue() + 1, c1.getName());
 
         assertTrue(c1.equals(c2));
@@ -65,7 +48,7 @@ public class CardTest
     @Test
     public void toStringTest () throws Exception
     {
-        Card c1 = allCards.get(random.nextInt(allCards.size()));
+        Card c1 = getAllCards().get(getRandomInt(getAllCards().size()));
 
         assertEquals(c1.getValue() + c1.getName(), c1.toString());
     }
