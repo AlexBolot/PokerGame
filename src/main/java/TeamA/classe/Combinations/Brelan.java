@@ -20,8 +20,21 @@ import java.util.ArrayList;
 
 public class Brelan extends Combination
 {
+    private Card triplet;
     public Brelan (ArrayList<Card> hand)
     {
         super(hand);
+    }
+
+    public Card getTriplet() {
+        return triplet;
+    }
+
+    public void setTriplet(Card triplet) {
+        this.triplet = triplet;
+    }
+
+    public static boolean isTypeOf(ArrayList<Card> cards){
+        return(false);
     }
 }

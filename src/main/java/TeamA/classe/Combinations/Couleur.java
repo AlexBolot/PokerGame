@@ -20,8 +20,12 @@ import java.util.ArrayList;
 
 public class Couleur extends Combination
 {
+
     public Couleur (ArrayList<Card> hand)
     {
         super(hand);
+    }
+    public static boolean isTypeOf(ArrayList<Card> cards){
+        return(false);
     }
 }

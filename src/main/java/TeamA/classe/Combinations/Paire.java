@@ -20,8 +20,21 @@ import java.util.ArrayList;
 
 public class Paire extends Combination
 {
+    private Card paire;
     public Paire (ArrayList<Card> hand)
     {
         super(hand);
+    }
+    public static boolean isTypeOf(ArrayList<Card> cards){
+
+        return(false);
+    }
+
+    public Card getPaire() {
+        return paire;
+    }
+
+    public void setPaire(Card paire) {
+        this.paire = paire;
     }
 }

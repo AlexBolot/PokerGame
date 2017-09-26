@@ -20,8 +20,21 @@ import java.util.ArrayList;
 
 public class Suite extends Combination
 {
+    private Card start;
+
+    public Card getStart() {
+        return start;
+    }
+
+    public void setStart(Card start) {
+        this.start = start;
+    }
+
     public Suite (ArrayList<Card> hand)
     {
         super(hand);
+    }
+    public static boolean isTypeOf(ArrayList<Card> cards){
+        return(false);
     }
 }

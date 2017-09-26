@@ -24,4 +24,7 @@ public class QuiteFlush extends Combination
     {
         super(hand);
     }
+    public static boolean isTypeOf(ArrayList<Card> cards){
+        return(false);
+    }
 }

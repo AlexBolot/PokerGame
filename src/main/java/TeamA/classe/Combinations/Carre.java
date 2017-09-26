@@ -24,4 +24,7 @@ public class Carre extends Combination
     {
         super(hand);
     }
+    public static boolean isTypeOf(ArrayList<Card> cards){
+        return(false);
+    }
 }
