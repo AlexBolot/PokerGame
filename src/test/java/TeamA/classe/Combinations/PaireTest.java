@@ -51,4 +51,5 @@ public class PaireTest
         // obj1 = obj3
         Assert.assertEquals(0, obj1.compareTo(obj3));
     }
+
 }

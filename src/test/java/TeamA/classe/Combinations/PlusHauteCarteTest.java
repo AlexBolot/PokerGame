@@ -44,6 +44,7 @@ public class PlusHauteCarteTest
                                                                                new Card(3, "Pi"),
                                                                                new Card(4, "Pi"))));
 
+
         // obj1 > obj2
         Assert.assertEquals(1, obj1.compareTo(obj2));
         // obj2 < obj1

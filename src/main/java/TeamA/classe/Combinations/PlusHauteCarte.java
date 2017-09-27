@@ -20,7 +20,9 @@ import java.util.ArrayList;
 
 public class PlusHauteCarte extends Combination {
    public int compareTo(PlusHauteCarte phc) {
-        int result;
+       //fixme : plus haute carte doit pouvoir se comparer a d'autre combinaisons, faire un appel du super.compareto
+
+       int result;
         ArrayList <Card> reste1 = (ArrayList<Card>) this.getHand().clone();
         ArrayList <Card> reste2 = (ArrayList<Card>) phc.getHand().clone();
 

@@ -37,4 +37,20 @@ public class Paire extends Combination
     public void setPaire(Card paire) {
         this.paire = paire;
     }
+
+    @Override
+    public int compareTo(Combination otherComb) {
+        int valueCompare = super.compareTo(otherComb);
+        if(valueCompare!=0){
+            return valueCompare;
+        }
+        Paire otherPair = (Paire) otherComb;
+        int cardCompare = this.paire.compareTo(otherPair.paire);
+        if(cardCompare != 0){
+            return cardCompare;
+        }
+        PlusHauteCarte reste = new PlusHauteCarte(this.getHand());
+        PlusHauteCarte autreReste = new PlusHauteCarte(otherPair.getHand());
+        return reste.compareTo(autreReste);
+    }
 }
