@@ -28,8 +28,8 @@ public class Paire extends Combination
         setValue(1);
         hand.remove(hand.indexOf(paire));
         hand.remove(hand.indexOf(paire));
-        //hand a maintenant uniquement 3 cartes dans la main vu qu'on a enlevé la paire TO DO En cas de paires égales
-        // On doit pouvoir trouver la main qui gagne grâce à la plus haute carte
+        //hand a maintenant uniquement 3 cartes dans la main vu qu'on a enlevé la paire
+        //TODO En cas de paires égales on doit pouvoir trouver la main qui gagne grâce à la plus haute carte
     }
     public static boolean isTypeOf(ArrayList<Card> cards){
         if (FindPaire(cards)!=null){
