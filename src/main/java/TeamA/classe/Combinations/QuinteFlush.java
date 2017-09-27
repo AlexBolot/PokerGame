@@ -18,7 +18,7 @@ import java.util.ArrayList;
  . Last Modified : 23/09/17 16:42
  ...............................................................................................................................*/
 
-public class QuiteFlush extends Combination
+public class QuinteFlush extends Combination
 {
     public Card getStart() {
         return start;
@@ -29,7 +29,7 @@ public class QuiteFlush extends Combination
     }
 
     private Card start;
-    public QuiteFlush (ArrayList<Card> hand)
+    public QuinteFlush (ArrayList<Card> hand)
     {
         super(hand);
     }
