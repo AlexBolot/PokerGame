@@ -19,7 +19,7 @@ import static java.lang.Integer.parseInt;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 24/09/17 01:20
+ . Last Modified : 26/09/17 17:16
  ...............................................................................................................................*/
 
 public abstract class Parser
@@ -28,7 +28,7 @@ public abstract class Parser
     public static Hand readCards ()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez 5 cartes (cad un chiffre de 1 à 10 et une lettre pour la couleur)");
+        System.out.println("Entrez 5 cartes (cad un chiffre de 2 à 10");// et une lettre pour la couleur)");
         String main = sc.nextLine();
         return parseCards(main);
     }
