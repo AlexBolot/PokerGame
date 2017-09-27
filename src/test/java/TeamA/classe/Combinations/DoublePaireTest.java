@@ -57,11 +57,18 @@ public class DoublePaireTest
                                                                 new Card(2, "Pi"),
                                                                 new Card(2, "Pi")));
 
-        Assert.assertEquals(true, DoublePaire.isTypeOf(obj1));
-        Assert.assertEquals(true, DoublePaire.isTypeOf(obj2));
-        Assert.assertEquals(false, DoublePaire.isTypeOf(obj3));
-        Assert.assertEquals(false, DoublePaire.isTypeOf(obj4));
-        Assert.assertEquals(false, DoublePaire.isTypeOf(obj5));
+        ArrayList<Card> obj6 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                                                            new Card(2, "Co"),
+                                                            new Card(1, "Tr"),
+                                                            new Card(2, "Pi"),
+                                                            new Card(7, "Pi")));
+
+        Assert.assertEquals(true, DoublePaire.isTypeOf(obj1));// double pair
+        Assert.assertEquals(true, DoublePaire.isTypeOf(obj2)); // double pair
+        Assert.assertEquals(false, DoublePaire.isTypeOf(obj3)); // pair
+        Assert.assertEquals(false, DoublePaire.isTypeOf(obj4)); //brelan
+        Assert.assertEquals(false, DoublePaire.isTypeOf(obj5)); // brelan
+        Assert.assertEquals(false, DoublePaire.isTypeOf(obj6)); // carré
     }
 
 
