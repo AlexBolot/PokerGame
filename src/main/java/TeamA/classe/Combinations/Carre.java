@@ -20,6 +20,15 @@ import java.util.ArrayList;
 
 public class Carre extends Combination
 {
+    public Card getQuartet() {
+        return quartet;
+    }
+
+    public void setQuartet(Card quartet) {
+        this.quartet = quartet;
+    }
+
+    private Card quartet;
     public Carre (ArrayList<Card> hand)
     {
         super(hand);

@@ -20,6 +20,15 @@ import java.util.ArrayList;
 
 public class QuiteFlush extends Combination
 {
+    public Card getStart() {
+        return start;
+    }
+
+    public void setStart(Card start) {
+        this.start = start;
+    }
+
+    private Card start;
     public QuiteFlush (ArrayList<Card> hand)
     {
         super(hand);
