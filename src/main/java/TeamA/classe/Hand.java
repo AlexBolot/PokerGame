@@ -1,6 +1,7 @@
 package TeamA.classe;
 
 import TeamA.classe.Combinations.Combination;
+import TeamA.classe.Combinations.Paire;
 import TeamA.classe.Combinations.PlusHauteCarte;
 
 import java.util.ArrayList;
@@ -40,6 +41,9 @@ public class Hand
 
     public Combination findBestCombination ()
     {
+        if (Paire.isTypeOf(hand)) {
+            return (new Paire(hand));
+        }
         return new PlusHauteCarte(hand);
     }
 

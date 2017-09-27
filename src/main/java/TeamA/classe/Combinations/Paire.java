@@ -24,9 +24,18 @@ public class Paire extends Combination
     public Paire (ArrayList<Card> hand)
     {
         super(hand);
+        setValue(1);
     }
     public static boolean isTypeOf(ArrayList<Card> cards){
+        for (int i=0; i<5;i++){
+            for(int j=i+1; j<5;j++) {
+                if (cards.get(j).compareTo(cards.get(i))==0)
+                {
+                    return(true);
+                }
 
+            }
+        }
         return(false);
     }
 
