@@ -3,6 +3,7 @@ package TeamA.classe.Combinations;
 import TeamA.classe.Card;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -44,6 +45,20 @@ public class DoublePaire extends Combination
     }
 
     public static boolean isTypeOf(ArrayList<Card> cards){
+        int tab[] = new int[14], compteur = 0;
+        for( Card c : cards){
+            tab[c.getValue()] += 1;
+        }
+        for(int occurence : tab){
+            if(occurence == 2)
+                compteur++;
+        }
+        if(compteur == 2)
+            return true;
+        else
+            return false;
+    }
+    public static boolean isTypeOfOld(ArrayList<Card> cards){
         boolean pair = false;
         Card c1, c2;
         int val=-1;
