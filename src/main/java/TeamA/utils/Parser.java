@@ -6,8 +6,6 @@ import TeamA.classe.Hand;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static java.lang.Integer.parseInt;
-
 /*................................................................................................................................
  . Copyright (c)
  .
@@ -19,7 +17,7 @@ import static java.lang.Integer.parseInt;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 26/09/17 17:16
+ . Last Modified : 27/09/17 16:16
  ...............................................................................................................................*/
 
 public abstract class Parser
@@ -42,19 +40,59 @@ public abstract class Parser
 
     private static ArrayList<Card> getCard (String[] tab)
     {
-        Card c;
-        String card;
         ArrayList<Card> hand = new ArrayList<>();
+
         for (int i = 0; i < 5; i++)
         {
-            card = tab[i];
-            c = new Card(parseInt(card), "");
+            String stringVal = tab[i].substring(0, 1);
+            String color = tab[i].substring(1, 3);
+            int intVal = 0;
 
-            //Will be used in next release.
-            //card = tab[i].substring(0, 1);
-            //c = new Card(parseInt(card), tab[i].substring(1,3));
-            hand.add(c);
+            if (isInteger(stringVal))
+            {
+                intVal = Integer.parseInt(stringVal);
+            }
+            else
+            {
+                switch (stringVal)
+                {
+                    case "V":
+                        intVal = 11;
+                        break;
+
+                    case "D":
+                        intVal = 12;
+                        break;
+
+                    case "R":
+                        intVal = 13;
+                        break;
+
+                    case "A":
+                        intVal = 14;
+                        break;
+
+                    default:
+                        intVal = 0;
+                }
+            }
+
+            hand.add(new Card(intVal, color));
         }
         return hand;
+    }
+
+    private static boolean isInteger (String s)
+    {
+        try
+        {
+            //noinspection ResultOfMethodCallIgnored
+            Integer.parseInt(s);
+        }
+        catch (NumberFormatException | NullPointerException e)
+        {
+            return false;
+        }
+        return true;
     }
 }
