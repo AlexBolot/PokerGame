@@ -44,7 +44,25 @@ public class DoublePaire extends Combination
     }
 
     public static boolean isTypeOf(ArrayList<Card> cards){
-        return(false);
-
+        boolean pair = false;
+        Card c1, c2;
+        int val=-1;
+        for(int i=0; i<cards.size()-1; i++){
+            c1 = cards.get(i);
+            for(int j=i+1; j<cards.size(); j++){
+                c2 = cards.get(j);
+                if(c1.compareTo(c2) == 0 && c1.getValue() != val){
+                    if(pair){
+                        return true;
+                    }
+                    val = c1.getValue();
+                    pair = true;
+                    i++;
+                    j = i;
+                    c1 = cards.get(i);
+                }
+            }
+        }
+        return false;
     }
 }
