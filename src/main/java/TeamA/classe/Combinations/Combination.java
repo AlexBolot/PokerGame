@@ -72,16 +72,6 @@ abstract public class Combination implements Comparable<Combination> {
 
     @Override
     public int compareTo(Combination o) {
-        int result;
-        result = Integer.compare(this.value,o.value);
-        if (result!=0){
-            return(result);
-        }
-        if (o instanceof PlusHauteCarte && this instanceof PlusHauteCarte){
-            return(((PlusHauteCarte) this).compareTo((PlusHauteCarte) o));
-
-        }
-    return(-2);
-
+        return Integer.compare(getValue(),o.getValue());
     }
 }
