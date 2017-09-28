@@ -45,17 +45,27 @@ public class DoublePaire extends Combination
     }
 
     public static boolean isTypeOf(ArrayList<Card> cards){
-        int tab[] = new int[14], compteur = 0;
-        for( Card c : cards){
-            tab[c.getValue()] += 1;
-        }
-        for(int occurence : tab){
-            if(occurence == 2)
-                compteur++;
-        }
-        if(compteur == 2)
+        if(DoublePaire.FindDoublePaire(cards)!=null)
             return true;
         else
             return false;
+    }
+    public static Card[] FindDoublePaire(ArrayList<Card> hand){
+        int tab[] = new int[14], compteur = 0;
+        Card returntab[] = new Card[2];
+
+        for( Card c : hand){ // on compte les occcurences des cartes
+            tab[c.getValue()] += 1;
+        }
+        for(int i=0; i<tab.length; i++){ // on parcoure le tableau des occurences
+            if(tab[i] == 2) { // si la carte est en double alors on la stock dans un tableau
+                returntab[compteur] = new Card(i,"");
+                compteur++;
+            }
+        }
+        if(compteur==2) // on retour le tab uniquement s'il comptient deux paire
+            return returntab;
+        else
+            return null;
     }
 }
