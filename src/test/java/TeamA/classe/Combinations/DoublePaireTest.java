@@ -3,6 +3,7 @@ package TeamA.classe.Combinations;
 import TeamA.classe.Card;
 import TeamA.classe.Hand;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -24,45 +25,55 @@ import java.util.Arrays;
 
 public class DoublePaireTest
 {
+    private  ArrayList<Card> obj1, obj2, obj3, obj4, obj5, obj6;
+    @Before
+    public void init(){
+         obj1 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                new Card(8, "Co"),
+                new Card(8, "Tr"),
+                new Card(2, "Pi"),
+                new Card(4, "Pi")));
+
+        obj2 = new ArrayList<>(Arrays.asList(new Card(3, "Ca"),
+                new Card(3, "Co"),
+                new Card(7, "Tr"),
+                new Card(7, "Pi"),
+                new Card(4, "Pi")));
+
+        obj3 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                new Card(4, "Co"),
+                new Card(8, "Tr"),
+                new Card(2, "Pi"),
+                new Card(7, "Pi")));
+
+        obj4 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                new Card(2, "Co"),
+                new Card(1, "Tr"),
+                new Card(2, "Pi"),
+                new Card(7, "Pi")));
+
+        obj5 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                new Card(4, "Co"),
+                new Card(8, "Tr"),
+                new Card(2, "Pi"),
+                new Card(2, "Pi")));
+
+        obj6 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                new Card(2, "Co"),
+                new Card(1, "Tr"),
+                new Card(2, "Pi"),
+                new Card(7, "Pi")));
+    }
+
+    @Test
+    public void DoublePaire(){
+        DoublePaire dp = new DoublePaire(obj1);
+        Assert.assertEquals(1,dp.getHand().size()); // on test si les cartes on bien était supprimé de la main
+    }
+
     @Test
     public void isTypeOf () throws Exception
     {
-        ArrayList<Card> obj1 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                                             new Card(8, "Co"),
-                                                             new Card(8, "Tr"),
-                                                             new Card(2, "Pi"),
-                                                             new Card(4, "Pi")));
-
-        ArrayList<Card> obj2 = new ArrayList<>(Arrays.asList(new Card(3, "Ca"),
-                                                             new Card(3, "Co"),
-                                                             new Card(7, "Tr"),
-                                                             new Card(7, "Pi"),
-                                                             new Card(4, "Pi")));
-
-        ArrayList<Card> obj3 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                                             new Card(4, "Co"),
-                                                             new Card(8, "Tr"),
-                                                             new Card(2, "Pi"),
-                                                             new Card(7, "Pi")));
-
-        ArrayList<Card> obj4 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                                                new Card(2, "Co"),
-                                                                new Card(1, "Tr"),
-                                                                new Card(2, "Pi"),
-                                                                new Card(7, "Pi")));
-
-        ArrayList<Card> obj5 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                                                new Card(4, "Co"),
-                                                                new Card(8, "Tr"),
-                                                                new Card(2, "Pi"),
-                                                                new Card(2, "Pi")));
-
-        ArrayList<Card> obj6 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                                            new Card(2, "Co"),
-                                                            new Card(1, "Tr"),
-                                                            new Card(2, "Pi"),
-                                                            new Card(7, "Pi")));
-
         Assert.assertEquals(true, DoublePaire.isTypeOf(obj1));// double pair
         Assert.assertEquals(true, DoublePaire.isTypeOf(obj2)); // double pair
         Assert.assertEquals(false, DoublePaire.isTypeOf(obj3)); // pair
@@ -70,6 +81,8 @@ public class DoublePaireTest
         Assert.assertEquals(false, DoublePaire.isTypeOf(obj5)); // brelan
         Assert.assertEquals(false, DoublePaire.isTypeOf(obj6)); // carré
     }
+
+
 
 
 }
