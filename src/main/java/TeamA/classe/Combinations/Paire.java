@@ -24,21 +24,33 @@ public class Paire extends Combination
     public Paire (ArrayList<Card> hand)
     {
         super(hand);
+        paire=FindPaire(hand);
         setValue(1);
+        hand.remove(hand.indexOf(paire));
+        hand.remove(hand.indexOf(paire));
+        //hand a maintenant uniquement 3 cartes dans la main vu qu'on a enlevé la paire
+        //TODO En cas de paires égales on doit pouvoir trouver la main qui gagne grâce à la plus haute carte
     }
     public static boolean isTypeOf(ArrayList<Card> cards){
+        if (FindPaire(cards)!=null){
+            return(true);
+        }
+        return(false);
+    }
+    private static Card FindPaire(ArrayList<Card> hand){
+
         for (int i=0; i<5;i++){
             for(int j=i+1; j<5;j++) {
-                if (cards.get(j).compareTo(cards.get(i))==0)
+                if (hand.get(j).compareTo(hand.get(i))==0)
                 {
-                    return(true);
+                    return(hand.get(i));
                 }
 
             }
         }
-        return(false);
-    }
+        return null;
 
+    }
     public Card getPaire() {
         return paire;
     }
