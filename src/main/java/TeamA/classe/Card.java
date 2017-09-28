@@ -11,7 +11,7 @@ package TeamA.classe;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 27/09/17 16:19
+ . Last Modified : 28/09/17 10:34
  ...............................................................................................................................*/
 
 public class Card implements Comparable<Card>
@@ -57,7 +57,7 @@ public class Card implements Comparable<Card>
 
         Card cmpCard = (Card) obj;
 
-        return this.getValue() == cmpCard.getValue() && this.getName().equals(cmpCard.getName());
+        return this.getValue() == cmpCard.getValue();
     }
 
     @Override
