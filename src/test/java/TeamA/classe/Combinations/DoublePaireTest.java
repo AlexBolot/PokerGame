@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 29/09/17 13:46
+ . Last Modified : 29/09/17 14:48
  ...............................................................................................................................*/
 
 public class DoublePaireTest
@@ -77,15 +77,17 @@ public class DoublePaireTest
     {
         DoublePaire dp = new DoublePaire(obj1);
         assertEquals(1, dp.getHand().size()); // on test si les cartes on bien était supprimé de la main
+        assertFalse(dp.getHand().contains(dp.getStrongPaire())); // on s'assure que la paire forte n'est plus dans le reste
+        assertFalse(dp.getHand().contains(dp.getWeakPaire())); // on s'assure que la paire faible n'est plus dans la main
     }
 
     @Test
     public void isTypeOf ()
     {
-        assertEquals(true, DoublePaire.isTypeOf(obj1)); // double paire
-        assertEquals(false, DoublePaire.isTypeOf(obj4)); // paire
-        assertEquals(false, DoublePaire.isTypeOf(obj5)); // brelan
-        assertEquals(false, DoublePaire.isTypeOf(obj6)); // carré
+        assertTrue(DoublePaire.isTypeOf(obj1)); // double paire
+        assertTrue(DoublePaire.isTypeOf(obj4)); // paire
+        assertTrue(DoublePaire.isTypeOf(obj5)); // brelan
+        assertTrue(DoublePaire.isTypeOf(obj6)); // carré
     }
 
     @Test
