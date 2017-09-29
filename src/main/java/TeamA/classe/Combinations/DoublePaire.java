@@ -25,7 +25,20 @@ public class DoublePaire extends Combination
     private Card weakPaire;
     public DoublePaire (ArrayList<Card> hand)
     {
-        super(hand);
+        super(hand); // VRAIMENT UTILE ?????? TODO
+        Card tab[] = DoublePaire.FindDoublePaire(hand);
+        if(tab[0].compareTo(tab[1]) == 1){
+            strongPaire = tab[1];
+            weakPaire = tab[0];
+        }else{
+            strongPaire = tab[0];
+            weakPaire = tab[1];
+        }
+        hand.remove(strongPaire);
+        hand.remove(strongPaire);
+        hand.remove(weakPaire);
+        hand.remove(weakPaire);
+        this.setHand(hand);
     }
 
     public Card getStrongPaire() {
