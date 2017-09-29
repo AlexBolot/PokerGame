@@ -3,7 +3,6 @@ package TeamA.classe.Combinations;
 import TeamA.classe.Card;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -16,7 +15,7 @@ import java.util.HashMap;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 29/09/17 13:58
  ...............................................................................................................................*/
 
 public class DoublePaire extends Combination
@@ -25,20 +24,22 @@ public class DoublePaire extends Combination
     private Card weakPaire;
     public DoublePaire (ArrayList<Card> hand)
     {
-        super(hand); // VRAIMENT UTILE ?????? TODO
+        super(hand); // VRAIMENT UTILE ?????? -> Oui obligatoire à cause du extends... TODO
         Card tab[] = DoublePaire.FindDoublePaire(hand);
-        if(tab[0].compareTo(tab[1]) == 1){
+        if (tab[0].compareTo(tab[1]) > 0)
+        {
             strongPaire = tab[1];
             weakPaire = tab[0];
         }else{
-            strongPaire = tab[0];
-            weakPaire = tab[1];
+            strongPaire = tab[1];
+            weakPaire = tab[0];
         }
         hand.remove(strongPaire);
         hand.remove(strongPaire);
         hand.remove(weakPaire);
         hand.remove(weakPaire);
         this.setHand(hand);
+        this.setValue(2);
     }
 
     public Card getStrongPaire() {
@@ -80,5 +81,25 @@ public class DoublePaire extends Combination
             return returntab;
         else
             return null;
+    }
+
+    @Override
+    public int compareTo (Combination o)
+    {
+        int valueCompare = super.compareTo(o);
+        if (valueCompare != 0) return valueCompare;
+
+        DoublePaire doublePaire = (DoublePaire) o;
+
+        valueCompare = getStrongPaire().compareTo(doublePaire.getStrongPaire());
+        if (valueCompare != 0) return valueCompare;
+
+        valueCompare = getWeakPaire().compareTo(doublePaire.getWeakPaire());
+        if (valueCompare != 0) return valueCompare;
+
+        PlusHauteCarte phc1 = new PlusHauteCarte(getHand());
+        PlusHauteCarte phc2 = new PlusHauteCarte(doublePaire.getHand());
+
+        return phc1.compareTo(phc2);
     }
 }
