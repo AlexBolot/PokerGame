@@ -27,7 +27,7 @@ public class DoublePaire extends Combination
     {
         super(hand); // VRAIMENT UTILE ?????? TODO
         Card tab[] = DoublePaire.FindDoublePaire(hand);
-        if(tab[0].compareTo(tab[1]) == 1){
+        if(tab[0].compareTo(tab[1]) == 0){
             strongPaire = tab[1];
             weakPaire = tab[0];
         }else{
