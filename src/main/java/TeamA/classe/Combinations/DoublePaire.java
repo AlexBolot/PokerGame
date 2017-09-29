@@ -15,22 +15,25 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 29/09/17 13:58
+ . Last Modified : 29/09/17 14:00
  ...............................................................................................................................*/
 
 public class DoublePaire extends Combination
 {
     private Card strongPaire;
     private Card weakPaire;
+
     public DoublePaire (ArrayList<Card> hand)
     {
         super(hand); // VRAIMENT UTILE ?????? -> Oui obligatoire à cause du extends... TODO
         Card tab[] = DoublePaire.FindDoublePaire(hand);
         if (tab[0].compareTo(tab[1]) > 0)
         {
-            strongPaire = tab[1];
-            weakPaire = tab[0];
-        }else{
+            strongPaire = tab[0];
+            weakPaire = tab[1];
+        }
+        else
+        {
             strongPaire = tab[1];
             weakPaire = tab[0];
         }
@@ -42,45 +45,52 @@ public class DoublePaire extends Combination
         this.setValue(2);
     }
 
-    public Card getStrongPaire() {
-        return strongPaire;
+    public static boolean isTypeOf (ArrayList<Card> cards)
+    {
+        if (DoublePaire.FindDoublePaire(cards) != null) return true;
+        else return false;
     }
 
-    public void setStrongPaire(Card strongPaire) {
-        this.strongPaire = strongPaire;
-    }
-
-    public Card getWeakPaire() {
-        return weakPaire;
-    }
-
-    public void setWeakPaire(Card weakPaire) {
-        this.weakPaire = weakPaire;
-    }
-
-    public static boolean isTypeOf(ArrayList<Card> cards){
-        if(DoublePaire.FindDoublePaire(cards)!=null)
-            return true;
-        else
-            return false;
-    }
-    public static Card[] FindDoublePaire(ArrayList<Card> hand){
+    public static Card[] FindDoublePaire (ArrayList<Card> hand)
+    {
         int tab[] = new int[14], compteur = 0;
         Card returntab[] = new Card[2];
 
-        for( Card c : hand){ // on compte les occcurences des cartes
+        for (Card c : hand)
+        { // on compte les occcurences des cartes
             tab[c.getValue()] += 1;
         }
-        for(int i=0; i<tab.length; i++){ // on parcoure le tableau des occurences
-            if(tab[i] == 2) { // si la carte est en double alors on la stock dans un tableau
-                returntab[compteur] = new Card(i,"");
+        for (int i = 0; i < tab.length; i++)
+        { // on parcoure le tableau des occurences
+            if (tab[i] == 2)
+            { // si la carte est en double alors on la stock dans un tableau
+                returntab[compteur] = new Card(i, "");
                 compteur++;
             }
         }
         if (compteur == 2) // on retoune le tab uniquement s'il contient deux paires
             return returntab;
-        else
-            return null;
+        else return null;
+    }
+
+    public Card getStrongPaire ()
+    {
+        return strongPaire;
+    }
+
+    public void setStrongPaire (Card strongPaire)
+    {
+        this.strongPaire = strongPaire;
+    }
+
+    public Card getWeakPaire ()
+    {
+        return weakPaire;
+    }
+
+    public void setWeakPaire (Card weakPaire)
+    {
+        this.weakPaire = weakPaire;
     }
 
     @Override
