@@ -24,6 +24,27 @@ import java.util.Arrays;
  ...............................................................................................................................*/
 
 public class PaireTest {
+
+    @Test
+    public void testPair() {
+        //Right test for the pair constructeur
+        Paire pair = new Paire(
+                new ArrayList<>(Arrays.asList(
+                        new Card(2, "Ca"),
+                        new Card(5, "Co"),
+                        new Card(8, "Tr"),
+                        new Card(4, "Pi"),
+                        new Card(4, "Tr")
+                )));
+        Assert.assertEquals(new Card(4, "Pi"), pair.getPaire());
+        Assert.assertEquals(Arrays.asList(
+                new Card(2, "Ca"),
+                new Card(5, "Co"),
+                new Card(8, "Tr")), pair.getHand());
+
+
+    }
+
     //todo: question : est-ce que ce test devrais pas être dans "combinationTest"
     @Ignore("A besoin d'une combinaisont plus puissante de Pair correctement Instancié")
     @Test
