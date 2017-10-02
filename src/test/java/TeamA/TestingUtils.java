@@ -28,12 +28,12 @@ public class TestingUtils
     {
         allCards.clear();
 
-        for (int i = 1; i < 14; i++)
+        for (int i = 2; i < 11; i++)
         {
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
-            allCards.add(new Card(i, ""));
+            allCards.add(new Card(i, "TR"));
+            allCards.add(new Card(i, "PI"));
+            allCards.add(new Card(i, "CA"));
+            allCards.add(new Card(i, "CO"));
         }
 
         return allCards;
