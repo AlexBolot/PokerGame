@@ -26,33 +26,33 @@ import static org.junit.Assert.*;
 
 public class PaireTest
 {
-    private ArrayList<Card> obj1, obj2, obj3, obj4, obj5, obj6;
+    private ArrayList<Card> cards8Pair, cards7pair, cards8pairMixed, cardsNoPair, obj5, obj6;
 
     @Before
     public void init ()
     {
-        obj1 = new ArrayList<>(Arrays.asList(new Card(8, "Ca"),
+        cards8Pair = new ArrayList<>(Arrays.asList(new Card(8, "Ca"),
                                              new Card(8, "Co"),
                                              new Card(5, "Tr"),
                                              new Card(2, "Pi"),
                                              new Card(4, "Pi")));
 
         //Obj2 < Obj1
-        obj2 = new ArrayList<>(Arrays.asList(new Card(3, "Ca"),
+        cards7pair = new ArrayList<>(Arrays.asList(new Card(3, "Ca"),
                                              new Card(5, "Co"),
                                              new Card(7, "Tr"),
                                              new Card(7, "Pi"),
                                              new Card(4, "Pi")));
 
         //Obj3 = Obj1
-        obj3 = new ArrayList<>(Arrays.asList(new Card(8, "Ca"),
+        cards8pairMixed = new ArrayList<>(Arrays.asList(new Card(8, "Ca"),
                                              new Card(4, "Co"),
                                              new Card(2, "Pi"),
                                              new Card(5, "Tr"),
                                              new Card(8, "Pi")));
 
         //PlusHauteCarte
-        obj4 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+        cardsNoPair = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
                                              new Card(5, "Co"),
                                              new Card(8, "Tr"),
                                              new Card(4, "Pi"),
@@ -109,19 +109,19 @@ public class PaireTest
     @Test
     public void isTypeOf () throws Exception
     {
-        assertTrue(Paire.isTypeOf(obj1)); //DoublePaire
-        assertFalse(Paire.isTypeOf(obj4)); //PlusHauteCarte
+        assertTrue(Paire.isTypeOf(cards8Pair)); //DoublePaire
+        assertFalse(Paire.isTypeOf(cardsNoPair)); //PlusHauteCarte
     }
 
     @Test
     public void compareTo () throws Exception
     {
-        Paire paire1 = new Paire(obj1);
-        Paire paire2 = new Paire(obj2);
-        Paire paire2Bis = new Paire(obj3);
+        Paire paire1 = new Paire(cards8Pair);
+        Paire paire2 = new Paire(cards7pair);
+        Paire paire1Bis = new Paire(cards8pairMixed);
 
-        assertEquals(0, paire1.compareTo(paire2Bis));
-        assertEquals(-1, paire1.compareTo(paire2));
-        assertEquals(1, paire2.compareTo(paire1));
+        assertEquals(0, paire1.compareTo(paire1Bis));
+        assertEquals(-1, paire2.compareTo(paire1));
+        assertEquals(1, paire1Bis.compareTo(paire2));
     }
 }
