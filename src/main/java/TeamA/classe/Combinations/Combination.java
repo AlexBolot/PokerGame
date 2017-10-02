@@ -1,9 +1,6 @@
 package TeamA.classe.Combinations;
 
 import TeamA.classe.Card;
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
-import com.sun.org.apache.xpath.internal.SourceTree;
-import com.sun.org.apache.xpath.internal.operations.Plus;
 
 import java.util.ArrayList;
 
@@ -18,60 +15,65 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 02/10/17 23:25
  ...............................................................................................................................*/
 
-abstract public class Combination implements Comparable<Combination> {
-    private ArrayList<Card> hand = new ArrayList<Card>();
+abstract public class Combination implements Comparable<Combination>
+{
+    private ArrayList<Card> restOfCards = new ArrayList<>();
     private String name;
-    private int value;
+    private int    value;
 
-    public Combination(ArrayList<Card> hand){
-        this.hand = hand;
-
-        // TODO trouver la meilleure combinaison
-        //this.name =
-        //this.value = value;
+    public Combination (ArrayList<Card> restOfCards)
+    {
+        this.restOfCards = restOfCards;
     }
 
-    public ArrayList<Card> getHand() {
-        return hand;
+    public ArrayList<Card> getRestOfCards ()
+    {
+        return restOfCards;
     }
 
-    public String getName() {
+    public void setRestOfCards (ArrayList<Card> restOfCards)
+    {
+        this.restOfCards = restOfCards;
+    }
+
+    public String getName ()
+    {
         return name;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setHand(ArrayList<Card> hand) {
-        this.hand = hand;
-    }
-
-    public void setName(String name) {
+    public void setName (String name)
+    {
         this.name = name;
     }
 
-    public void setValue(int value) {
+    public int getValue ()
+    {
+        return value;
+    }
+
+    public void setValue (int value)
+    {
         this.value = value;
     }
 
-    public Card gethighestcard(ArrayList<Card> cards){
+    public Card gethighestcard (ArrayList<Card> cards)
+    {
         Card highest = cards.get(0);
-        for ( Card C : cards )
+
+        for (Card C : cards)
         {
-           if (C.compareTo(highest)==1)
-           {
-               highest = C;
-           }
+            if (C.compareTo(highest) > 0) highest = C;
         }
-        return(highest);
+
+        return (highest);
     }
 
     @Override
-    public int compareTo(Combination o) {
-        return Integer.compare(getValue(),o.getValue());
+    public int compareTo (Combination o)
+    {
+        return Integer.compare(getValue(), o.getValue());
     }
 }

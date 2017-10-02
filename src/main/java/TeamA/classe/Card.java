@@ -11,7 +11,7 @@ package TeamA.classe;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 28/09/17 10:34
+ . Last Modified : 02/10/17 23:03
  ...............................................................................................................................*/
 
 public class Card implements Comparable<Card>
@@ -23,11 +23,6 @@ public class Card implements Comparable<Card>
     {
         this.value = value;
         this.name = name;
-    }
-
-    public int compareTo (Card card)
-    {
-        return Integer.compare(this.value, card.value);
     }
 
     public int getValue ()
@@ -48,6 +43,11 @@ public class Card implements Comparable<Card>
     public void setName (String name)
     {
         this.name = name;
+    }
+
+    public int compareTo (Card card)
+    {
+        return Integer.compare(this.value, card.value);
     }
 
     @Override

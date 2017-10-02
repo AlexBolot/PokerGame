@@ -15,7 +15,7 @@ import static TeamA.utils.Parser.readCards;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 24/09/17 17:27
+ . Last Modified : 02/10/17 23:30
  ...............................................................................................................................*/
 
 /**
@@ -25,7 +25,6 @@ public class App
 {
     public static void main (String[] args)
     {
-
         System.out.println("Hello team A!");
         Hand hand1, hand2;
         hand1 = readCards();
@@ -35,17 +34,23 @@ public class App
 
         System.out.println("Main 1 : " + hand1.toString());
         System.out.println("Main 2 : " + hand2.toString());
-        switch(hand1.findBestCombination().compareTo(hand2.findBestCombination())){
+
+        switch (hand1.findBestCombination().compareTo(hand2.findBestCombination()))
+        {
             case 1:
                 System.out.println("La main 1 est gagnante");
                 break;
+
             case -1:
                 System.out.println("La main 2 est gagnante");
                 break;
+
             case 0:
                 System.out.println("Egalité");
+                break;
+
+            default:
+                System.out.println("Something went wrong");
         }
-
-
     }
 }

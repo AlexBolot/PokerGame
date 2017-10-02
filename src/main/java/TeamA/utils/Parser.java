@@ -17,57 +17,55 @@ import java.util.Scanner;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 27/09/17 16:16
+ . Last Modified : 02/10/17 22:59
  ...............................................................................................................................*/
 
 public abstract class Parser
 {
-    private static ArrayList<Card> typedCard = new ArrayList<>();
+    private static ArrayList<Card> typedCards = new ArrayList<>();
 
     public static Hand readCards ()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez 5 cartes (c'est à dire un chiffre de 2 à 10 et V=Valet, D=Dame, R=Roi, A=As et deux lettres pour la couleur TR=trèle, CO=coeur, CA=carreau, PI=Pique)");
-        String main = sc.nextLine();
-        return parseCards(main);
+        System.out.println(
+                "Entrez 5 cartes (c'est à dire un chiffre de 2 à 10 et V=Valet, D=Dame, R=Roi, A=As et deux lettres pour la couleur TR=trèle, CO=coeur, CA=carreau, PI=Pique)");
+
+        String line = sc.nextLine();
+        return parseCards(line);
     }
 
-    private static Hand parseCards (String main)
+    private static Hand parseCards (String line)
     {
-        String[] tabMain;
-        tabMain = main.split(" ");
-        if (tabMain.length!=5)
-        {
-            System.out.println("Vous avez saisi " + tabMain.length + " Carte(s), veuillez en saisir 5");
-            readCards();
-        }
-        return new Hand(getCard(tabMain));
+        String[] stringCardsArray;
+        stringCardsArray = line.split(" ");
 
+        if (stringCardsArray.length != 5)
+            printErrorAndRestart("Vous avez saisi " + stringCardsArray.length + " Carte(s), veuillez en saisir 5");
+
+        return new Hand(getCard(stringCardsArray));
     }
 
-    private static ArrayList<Card> getCard (String[] tab)
+    private static ArrayList<Card> getCard (String[] stringCardsArray)
     {
         ArrayList<Card> hand = new ArrayList<>();
 
         for (int i = 0; i < 5; i++)
         {
-            if (tab[i].length()<3)
-            {
-                System.out.println("La carte a été mal saisie, veuillez réessayer.");
-                readCards();
-            }
-            String stringVal = tab[i].substring(0,tab[i].length()-2);
-            String color = tab[i].substring(tab[i].length()-2);
+            String stringCard = stringCardsArray[i];
+            int stringCardLength = stringCard.length();
+
+            if (stringCardLength < 3) printErrorAndRestart("La carte a été mal saisie, veuillez réessayer.");
+
+            String stringVal = stringCard.substring(0, stringCardLength - 2);
+            String color = stringCard.substring(stringCardLength - 2);
             int intVal = 0;
 
             if (isInteger(stringVal))
             {
                 intVal = Integer.parseInt(stringVal);
-                if (intVal>10 || intVal<2)
-                {
-                    System.out.println("Vous avez saisi  " + intVal + " Veuillez rentrer un nombre entre 2 et 10");
-                    readCards();
-                }
+
+                if (intVal > 10 || intVal < 2)
+                    printErrorAndRestart("Vous avez saisi  " + intVal + " Veuillez rentrer un nombre entre 2 et 10");
             }
             else
             {
@@ -90,25 +88,27 @@ public abstract class Parser
                         break;
 
                     default:
-                        System.out.println(tab[i] + " est incorrecte, veuillez saisir une carte correcte. ");
-                        readCards();
+                        printErrorAndRestart(stringCard + " est incorrecte, veuillez saisir une carte correcte. ");
                 }
             }
+
             if (!color.equals("PI") && !color.equals("CO") && !color.equals("CA") && !color.equals("TR"))
-            {
-                System.out.println(color + "n'est pas une couleur existante dans le Poker.");
-                readCards();
-            }
+                printErrorAndRestart(color + "n'est pas une couleur existante dans le Poker.");
+
             Card card = new Card(intVal, color);
-            if (typedCard.contains(card))
-            {
-                System.out.println(card + " a déjà été saisi");
-                readCards();
-            }
-            typedCard.add(card);
+
+            if (typedCards.contains(card)) printErrorAndRestart(card + " a déjà été saisi");
+
+            typedCards.add(card);
             hand.add(card);
         }
         return hand;
+    }
+
+    private static void printErrorAndRestart (String message)
+    {
+        System.out.println(message);
+        readCards();
     }
 
     private static boolean isInteger (String s)

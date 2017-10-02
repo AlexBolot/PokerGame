@@ -15,68 +15,72 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 02/10/17 23:48
  ...............................................................................................................................*/
 
 public class Paire extends Combination
 {
     private Card paire;
+
     public Paire (ArrayList<Card> hand)
     {
         super(hand);
-        paire=FindPaire(hand);
-        setValue(1);
-        hand.remove(hand.indexOf(paire));
-        hand.remove(hand.indexOf(paire));
-        this.setHand(hand);
-        //hand a maintenant uniquement 3 cartes dans la main vu qu'on a enlevé la paire
-        //TODO En cas de paires égales on doit pouvoir trouver la main qui gagne grâce à la plus haute carte
-    }
-    public static boolean isTypeOf(ArrayList<Card> cards){
-        if (FindPaire(cards)!=null){
-            return(true);
+        paire = FindPaire(hand);
+
+        //noinspection unchecked
+        ArrayList<Card> reducedHand = (ArrayList<Card>) hand.clone();
+
+        for (Card c : hand)
+        {
+            if (c.compareTo(paire) == 0) reducedHand.remove(c);
         }
-        return(false);
+
+        this.setRestOfCards(reducedHand);
+        this.setValue(1);
     }
-    private static Card FindPaire(ArrayList<Card> hand){
 
-        for (int i=0; i<5;i++){
-            for(int j=i+1; j<5;j++) {
-                if (hand.get(j).compareTo(hand.get(i))==0)
-                {
-                    return(hand.get(i));
-                }
+    public static boolean isTypeOf (ArrayList<Card> cards)
+    {
+        return FindPaire(cards) != null;
+    }
 
+    private static Card FindPaire (ArrayList<Card> hand)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = i + 1; j < 5; j++)
+            {
+                if (hand.get(j).compareTo(hand.get(i)) == 0) return (hand.get(i));
             }
         }
-        return null;
 
+        return null;
     }
-    public Card getPaire() {
+
+    public Card getPaire ()
+    {
         return paire;
     }
 
-    public void setPaire(Card paire) {
+    public void setPaire (Card paire)
+    {
         this.paire = paire;
     }
 
     @Override
-    public int compareTo(Combination otherComb) {
+    public int compareTo (Combination otherComb)
+    {
         int valueCompare = super.compareTo(otherComb);
 
-        if(valueCompare!=0){
-            return valueCompare;
-        }
+        if (valueCompare != 0) return valueCompare;
 
         Paire otherPair = (Paire) otherComb;
         int cardCompare = this.paire.compareTo(otherPair.paire);
 
-        if(cardCompare != 0){
-            return cardCompare;
-        }
+        if (cardCompare != 0) return cardCompare;
 
-        PlusHauteCarte reste = new PlusHauteCarte(this.getHand());
-        PlusHauteCarte autreReste = new PlusHauteCarte(otherPair.getHand());
+        PlusHauteCarte reste = new PlusHauteCarte(this.getRestOfCards());
+        PlusHauteCarte autreReste = new PlusHauteCarte(otherPair.getRestOfCards());
 
         return reste.compareTo(autreReste);
     }

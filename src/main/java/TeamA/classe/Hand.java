@@ -1,6 +1,7 @@
 package TeamA.classe;
 
 import TeamA.classe.Combinations.Combination;
+import TeamA.classe.Combinations.DoublePaire;
 import TeamA.classe.Combinations.Paire;
 import TeamA.classe.Combinations.PlusHauteCarte;
 
@@ -17,12 +18,12 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 24/09/17 21:01
+ . Last Modified : 02/10/17 23:03
  ...............................................................................................................................*/
 
 public class Hand
 {
-    private ArrayList<Card> hand = new ArrayList<Card>();
+    private ArrayList<Card> hand = new ArrayList<>();
 
     public Hand (ArrayList<Card> hand)
     {
@@ -41,19 +42,21 @@ public class Hand
 
     public Combination findBestCombination ()
     {
-        if (Paire.isTypeOf(hand)) {
-            return (new Paire(hand));
-        }
+        if (DoublePaire.isTypeOf(hand)) return new DoublePaire(hand);
+        if (Paire.isTypeOf(hand)) return (new Paire(hand));
+
         return new PlusHauteCarte(hand);
     }
 
     public String toString ()
     {
         StringBuilder affHand = new StringBuilder();
+
         for (Card c : hand)
         {
             affHand.append(c).append(" ");
         }
+
         return affHand.toString();
     }
 

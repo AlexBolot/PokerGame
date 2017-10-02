@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 02/10/17 23:48
  ...............................................................................................................................*/
 
 public class PlusHauteCarte extends Combination {
@@ -23,8 +23,8 @@ public class PlusHauteCarte extends Combination {
        //fixme : plus haute carte doit pouvoir se comparer a d'autre combinaisons, faire un appel du super.compareto
 
        int result;
-        ArrayList <Card> reste1 = (ArrayList<Card>) this.getHand().clone();
-        ArrayList <Card> reste2 = (ArrayList<Card>) phc.getHand().clone();
+       ArrayList<Card> reste1 = (ArrayList<Card>) this.getRestOfCards().clone();
+       ArrayList<Card> reste2 = (ArrayList<Card>) phc.getRestOfCards().clone();
 
         while (reste1.size()>0 && reste2.size()>0) {
             result = gethighestcard(reste1).compareTo(gethighestcard(reste2));
