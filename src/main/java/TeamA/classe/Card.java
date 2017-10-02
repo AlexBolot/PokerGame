@@ -57,7 +57,7 @@ public class Card implements Comparable<Card>
 
         Card cmpCard = (Card) obj;
 
-        return this.getValue() == cmpCard.getValue();
+        return this.getValue() == cmpCard.getValue() && this.getName().equals(cmpCard.getName());
     }
 
     @Override
