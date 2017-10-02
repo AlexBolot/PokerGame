@@ -1,13 +1,14 @@
 package TeamA.classe.Combinations;
 
 import TeamA.classe.Card;
-import com.sun.org.apache.xpath.internal.operations.Plus;
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static org.junit.Assert.*;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -20,10 +21,44 @@ import java.util.Arrays;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 26/09/17 16:39
+ . Last Modified : 29/09/17 14:48
  ...............................................................................................................................*/
 
-public class PaireTest {
+public class PaireTest
+{
+    private ArrayList<Card> obj1, obj2, obj3, obj4, obj5, obj6;
+
+    @Before
+    public void init ()
+    {
+        obj1 = new ArrayList<>(Arrays.asList(new Card(8, "Ca"),
+                                             new Card(8, "Co"),
+                                             new Card(5, "Tr"),
+                                             new Card(2, "Pi"),
+                                             new Card(4, "Pi")));
+
+        //Obj2 < Obj1
+        obj2 = new ArrayList<>(Arrays.asList(new Card(3, "Ca"),
+                                             new Card(5, "Co"),
+                                             new Card(7, "Tr"),
+                                             new Card(7, "Pi"),
+                                             new Card(4, "Pi")));
+
+        //Obj3 = Obj1
+        obj3 = new ArrayList<>(Arrays.asList(new Card(8, "Ca"),
+                                             new Card(4, "Co"),
+                                             new Card(2, "Pi"),
+                                             new Card(5, "Tr"),
+                                             new Card(8, "Pi")));
+
+        //PlusHauteCarte
+        obj4 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                                             new Card(5, "Co"),
+                                             new Card(8, "Tr"),
+                                             new Card(4, "Pi"),
+                                             new Card(3, "Pi")));
+    }
+
 
     @Test
     public void testPair() {
@@ -36,8 +71,8 @@ public class PaireTest {
                         new Card(4, "Pi"),
                         new Card(4, "Tr")
                 )));
-        Assert.assertEquals(new Card(4, "Pi"), pair.getPaire());
-        Assert.assertEquals(Arrays.asList(
+        assertEquals(new Card(4, "Pi"), pair.getPaire());
+        assertEquals(Arrays.asList(
                 new Card(2, "Ca"),
                 new Card(5, "Co"),
                 new Card(8, "Tr")), pair.getHand());
@@ -46,92 +81,47 @@ public class PaireTest {
     }
 
     //todo: question : est-ce que ce test devrais pas être dans "combinationTest"
-    @Ignore("A besoin d'une combinaisont plus puissante de Pair correctement Instancié")
+    // Oui, cette méthode de test n'est pas au bon endroit. Grégoire devra la retirer.
+
+    @Ignore ("A besoin d'une combinaisont plus puissante de Pair correctement Instancié")
     @Test
-    public void compareToComb() throws Exception {
-        Paire pair = new Paire(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                new Card(5, "Co"),
-                new Card(8, "Tr"))));
+    public void compareToComb () throws Exception
+    {
+        Paire pair = new Paire(new ArrayList<>(Arrays.asList(new Card(2, "Ca"), new Card(5, "Co"), new Card(8, "Tr"))));
         pair.setPaire(new Card(4, "Pi"));
 
-        PlusHauteCarte highCard = new PlusHauteCarte(new ArrayList<>(Arrays.asList(
-                new Card(2, "Ca"),
-                new Card(5, "Co"),
-                new Card(8, "Tr"),
-                new Card(4, "Pi"),
-                new Card(4, "Pi")
-        )));
+        PlusHauteCarte highCard = new PlusHauteCarte(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                                                                                   new Card(5, "Co"),
+                                                                                   new Card(8, "Tr"),
+                                                                                   new Card(4, "Pi"),
+                                                                                   new Card(4, "Pi"))));
 
-        QuinteFlush quinteFlush = new QuinteFlush(new ArrayList<>(Arrays.asList(
-                new Card(2, "Ca"),
-                new Card(5, "Co"),
-                new Card(8, "Tr"),
-                new Card(4, "Pi"),
-                new Card(4, "Pi")
-        )));
-        Assert.assertEquals(-1, pair.compareTo(quinteFlush));
+        QuinteFlush quinteFlush = new QuinteFlush(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                                                                                new Card(5, "Co"),
+                                                                                new Card(8, "Tr"),
+                                                                                new Card(4, "Pi"),
+                                                                                new Card(4, "Pi"))));
+        assertEquals(-1, pair.compareTo(quinteFlush));
 
-        Assert.assertEquals(1, pair.compareTo(highCard));
+        assertEquals(1, pair.compareTo(highCard));
     }
 
     @Test
-    public void compareToPair() throws Exception {
-        //todo: rework to match the new constructor
-
-        Paire pair4 = new Paire(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                new Card(5, "Co"),
-                new Card(8, "Tr"))));
-        pair4.setPaire(new Card(4, "Pi"));
-
-        Paire pair7 = new Paire(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                new Card(3, "Pi"),
-                new Card(4, "Pi"))));
-        pair7.setPaire(new Card(7, "Co"));
-
-        Paire pair4Pi = new Paire(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                new Card(8, "Tr"),
-                new Card(5, "Co"))));
-        pair4Pi.setPaire(new Card(4, "Pi"));
-
-        // pair4 == pair4Pi , should return 0
-        Assert.assertEquals(0, pair4.compareTo(pair4Pi));
-        Assert.assertEquals(0, pair4.compareTo(pair4));
-        // pair4 <pair7     , should return -1
-        Assert.assertEquals(-1, pair4.compareTo(pair7));
-        // pair4 >pair7     , should return 1
-        Assert.assertEquals(1, pair7.compareTo(pair4));
-
+    public void isTypeOf () throws Exception
+    {
+        assertTrue(Paire.isTypeOf(obj1)); //DoublePaire
+        assertFalse(Paire.isTypeOf(obj4)); //PlusHauteCarte
     }
 
-    @Ignore("broken")
     @Test
-    public void isTypeOf() throws Exception {
-        Paire obj1 = new Paire(new ArrayList<>(Arrays.asList(
-                new Card(2, "Ca"),
-                new Card(5, "Co"),
-                new Card(8, "Tr"),
-                new Card(4, "Pi"),
-                new Card(4, "Pi")
-        )));
+    public void compareTo () throws Exception
+    {
+        Paire paire1 = new Paire(obj1);
+        Paire paire2 = new Paire(obj2);
+        Paire paire2Bis = new Paire(obj3);
 
-        Paire obj2 = new Paire(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                new Card(7, "Co"),
-                new Card(7, "Tr"),
-                new Card(3, "Pi"),
-                new Card(4, "Pi"))));
-
-        Paire obj3 = new Paire(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                new Card(8, "Tr"),
-                new Card(5, "Co"),
-                new Card(4, "Pi"),
-                new Card(4, "Pi"))));
-        //fixme : les cartes ne sont pas correctement construite
-        // obj1 > obj2
-        Assert.assertEquals(1, obj1.compareTo(obj2));
-        // obj2 < obj1
-        Assert.assertEquals(-1, obj2.compareTo(obj1));
-        // obj1 = obj3
-        Assert.assertEquals(0, obj1.compareTo(obj3));
+        assertEquals(0, paire1.compareTo(paire2Bis));
+        assertEquals(-1, paire1.compareTo(paire2));
+        assertEquals(1, paire2.compareTo(paire1));
     }
-
 }

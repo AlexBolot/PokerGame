@@ -28,6 +28,7 @@ public class Paire extends Combination
         setValue(1);
         hand.remove(hand.indexOf(paire));
         hand.remove(hand.indexOf(paire));
+        this.setHand(hand);
         //hand a maintenant uniquement 3 cartes dans la main vu qu'on a enlevé la paire
         //TODO En cas de paires égales on doit pouvoir trouver la main qui gagne grâce à la plus haute carte
     }
