@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 29/09/17 14:48
+ . Last Modified : 02/10/17 23:26
  ...............................................................................................................................*/
 
 public class DoublePaireTest
@@ -76,18 +76,19 @@ public class DoublePaireTest
     public void DoublePaire ()
     {
         DoublePaire dp = new DoublePaire(obj1);
-        assertEquals(1, dp.getHand().size()); // on test si les cartes on bien était supprimé de la main
-        assertFalse(dp.getHand().contains(dp.getStrongPaire())); // on s'assure que la paire forte n'est plus dans le reste
-        assertFalse(dp.getHand().contains(dp.getWeakPaire())); // on s'assure que la paire faible n'est plus dans la main
+
+        assertEquals(1, dp.getRestOfCards().size()); // on test si les cartes on bien était supprimé de la main
+        assertFalse(dp.getRestOfCards().contains(dp.getStrongPaire())); // on s'assure que la paire forte n'est plus dans le reste
+        assertFalse(dp.getRestOfCards().contains(dp.getWeakPaire())); // on s'assure que la paire faible n'est plus dans la main
     }
 
     @Test
     public void isTypeOf ()
     {
         assertTrue(DoublePaire.isTypeOf(obj1)); // double paire
-        assertTrue(DoublePaire.isTypeOf(obj4)); // paire
-        assertTrue(DoublePaire.isTypeOf(obj5)); // brelan
-        assertTrue(DoublePaire.isTypeOf(obj6)); // carré
+        assertFalse(DoublePaire.isTypeOf(obj4)); // paire
+        assertFalse(DoublePaire.isTypeOf(obj5)); // brelan
+        assertFalse(DoublePaire.isTypeOf(obj6)); // carré
     }
 
     @Test
