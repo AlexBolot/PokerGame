@@ -44,13 +44,6 @@ public class DoublePaire extends Combination
             if (c.compareTo(weakPaire) == 0) reducedHand.remove(c);
         }
 
-       /* hand.remove(strongPaire);
-        hand.remove(strongPaire);
-        hand.remove(weakPaire);
-        hand.remove(weakPaire);
-        */
-
-
         this.setRestOfCards(reducedHand);
         this.setValue(2);
     }

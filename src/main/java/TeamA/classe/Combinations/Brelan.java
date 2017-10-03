@@ -24,6 +24,17 @@ public class Brelan extends Combination
     public Brelan (ArrayList<Card> hand)
     {
         super(hand);
+        triplet = FindBrelan(hand);
+
+        //noinspection unchecked
+        ArrayList<Card> reducedHand = (ArrayList<Card>) hand.clone();
+        for (Card c : hand)
+        {
+            if (c.compareTo(triplet) == 0) reducedHand.remove(c);
+        }
+
+        this.setRestOfCards(reducedHand);
+        this.setValue(3);
     }
 
     public Card getTriplet() {
@@ -34,7 +45,27 @@ public class Brelan extends Combination
         this.triplet = triplet;
     }
 
-    public static boolean isTypeOf(ArrayList<Card> cards){
-        return(false);
+    public static boolean isTypeOf (ArrayList<Card> cards)
+    {
+        return FindBrelan(cards) != null;
+    }
+
+    public static Card FindBrelan(ArrayList<Card> hand){
+        int[] tab = new int[14];
+        Card carteBrelan = null;
+
+        for (Card c : hand)
+        {
+            tab[c.getValue()] += 1;
+        }
+
+        for (int i = 0; i < tab.length; i++)
+        {
+            if (tab[i] == 3)
+            {
+                carteBrelan = new Card(i, "");
+            }
+        }
+        return carteBrelan;
     }
 }
