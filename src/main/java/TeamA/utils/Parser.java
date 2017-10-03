@@ -17,7 +17,7 @@ import java.util.Scanner;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 02/10/17 22:59
+ . Last Modified : 03/10/17 18:21
  ...............................................................................................................................*/
 
 public abstract class Parser
@@ -92,7 +92,7 @@ public abstract class Parser
                 }
             }
 
-            if (!color.equals("PI") && !color.equals("CO") && !color.equals("CA") && !color.equals("TR"))
+            if (!color.equals("Pi") && !color.equals("Co") && !color.equals("Ca") && !color.equals("Tr"))
                 printErrorAndRestart(color + "n'est pas une couleur existante dans le Poker.");
 
             Card card = new Card(intVal, color);

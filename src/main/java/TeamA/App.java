@@ -15,7 +15,7 @@ import static TeamA.utils.Parser.readCards;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 02/10/17 23:30
+ . Last Modified : 03/10/17 19:04
  ...............................................................................................................................*/
 
 /**
@@ -38,15 +38,15 @@ public class App
         switch (hand1.findBestCombination().compareTo(hand2.findBestCombination()))
         {
             case 1:
-                System.out.println("La main 1 est gagnante");
+                System.out.println("La main 1 est gagnante avec " + hand1.findBestCombination().getClass().getSimpleName());
                 break;
 
             case -1:
-                System.out.println("La main 2 est gagnante");
+                System.out.println("La main 2 est gagnante avec " + hand2.findBestCombination().getClass().getSimpleName());
                 break;
 
             case 0:
-                System.out.println("Egalité");
+                System.out.println("Egalité avec " + hand1.findBestCombination().getClass().getSimpleName());
                 break;
 
             default:

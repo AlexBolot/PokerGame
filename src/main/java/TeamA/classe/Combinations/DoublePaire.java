@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 02/10/17 23:37
+ . Last Modified : 03/10/17 18:24
  ...............................................................................................................................*/
 
 public class DoublePaire extends Combination
@@ -55,7 +55,7 @@ public class DoublePaire extends Combination
 
     public static Card[] FindDoublePaire (ArrayList<Card> hand)
     {
-        int[] tab = new int[14];
+        int[] tab = new int[15];
         int compteur = 0;
         Card returntab[] = new Card[2];
 

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 03/10/17 18:15
+ . Last Modified : 03/10/17 18:23
  ...............................................................................................................................*/
 
 public class Brelan extends Combination
@@ -40,7 +40,7 @@ public class Brelan extends Combination
 
     public static Card FindBrelan (ArrayList<Card> hand)
     {
-        int[] tab = new int[14];
+        int[] tab = new int[15];
         Card carteBrelan = null;
 
         for (Card c : hand)
