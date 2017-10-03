@@ -1,9 +1,6 @@
 package TeamA.classe;
 
-import TeamA.classe.Combinations.Combination;
-import TeamA.classe.Combinations.DoublePaire;
-import TeamA.classe.Combinations.Paire;
-import TeamA.classe.Combinations.PlusHauteCarte;
+import TeamA.classe.Combinations.*;
 
 import java.util.ArrayList;
 
@@ -18,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 02/10/17 23:03
+ . Last Modified : 03/10/17 14:03
  ...............................................................................................................................*/
 
 public class Hand
@@ -42,6 +39,7 @@ public class Hand
 
     public Combination findBestCombination ()
     {
+        if (Brelan.isTypeOf(hand)) return new Brelan(hand);
         if (DoublePaire.isTypeOf(hand)) return new DoublePaire(hand);
         if (Paire.isTypeOf(hand)) return (new Paire(hand));
 
