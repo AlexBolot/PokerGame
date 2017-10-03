@@ -15,12 +15,13 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 03/10/17 18:15
  ...............................................................................................................................*/
 
 public class Brelan extends Combination
 {
     private Card triplet;
+
     public Brelan (ArrayList<Card> hand)
     {
         super(hand);
@@ -37,20 +38,8 @@ public class Brelan extends Combination
         this.setValue(3);
     }
 
-    public Card getTriplet() {
-        return triplet;
-    }
-
-    public void setTriplet(Card triplet) {
-        this.triplet = triplet;
-    }
-
-    public static boolean isTypeOf (ArrayList<Card> cards)
+    public static Card FindBrelan (ArrayList<Card> hand)
     {
-        return FindBrelan(cards) != null;
-    }
-
-    public static Card FindBrelan(ArrayList<Card> hand){
         int[] tab = new int[14];
         Card carteBrelan = null;
 
@@ -67,5 +56,37 @@ public class Brelan extends Combination
             }
         }
         return carteBrelan;
+    }
+
+    public Card getTriplet ()
+    {
+        return triplet;
+    }
+
+    public static boolean isTypeOf (ArrayList<Card> cards)
+    {
+        return FindBrelan(cards) != null;
+    }
+
+    public void setTriplet (Card triplet)
+    {
+        this.triplet = triplet;
+    }
+
+    @Override
+    public int compareTo (Combination o)
+    {
+        int valueCompare = super.compareTo(o);
+        if (valueCompare != 0) return valueCompare;
+
+        Brelan brelan = (Brelan) o;
+
+        valueCompare = getTriplet().compareTo(brelan.getTriplet());
+        if (valueCompare != 0) return valueCompare;
+
+        PlusHauteCarte phc1 = new PlusHauteCarte(getRestOfCards());
+        PlusHauteCarte phc2 = new PlusHauteCarte(brelan.getRestOfCards());
+
+        return phc1.compareTo(phc2);
     }
 }
