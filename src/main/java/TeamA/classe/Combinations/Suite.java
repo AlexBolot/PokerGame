@@ -37,4 +37,12 @@ public class Suite extends Combination
     public static boolean isTypeOf(ArrayList<Card> cards){
         return(false);
     }
+
+    @Override
+    public int compareTo(Combination o) {
+        int valueCompare = super.compareTo(o);
+        if (valueCompare != 0) return valueCompare;
+        Suite s = (Suite) o;
+        return start.compareTo(s.getStart());
+    }
 }
