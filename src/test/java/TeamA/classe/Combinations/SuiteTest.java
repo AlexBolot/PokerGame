@@ -5,6 +5,7 @@ import jdk.internal.util.xml.impl.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -25,14 +26,14 @@ import static org.junit.Assert.assertTrue;
  . Last Modified : 26/09/17 16:50
  ...............................................................................................................................*/
 
-public class SuiteTest
-{
+public class SuiteTest {
 
     private ArrayList<Card> cards5start;
     private ArrayList<Card> cards2Start;
     private ArrayList<Card> cards5startMixed;
     private ArrayList<Card> cards2Pair;
     private ArrayList<Card> cards10Carree;
+    private ArrayList<Card> cardsAstart;
 
     @Before
     public void init() {
@@ -42,6 +43,12 @@ public class SuiteTest
                 new Card(7, "Tr"),
                 new Card(8, "Pi"),
                 new Card(9, "Pi")));
+        cardsAstart = new ArrayList<>(Arrays.asList(
+                new Card(14, "Ca"),
+                new Card(2, "Co"),
+                new Card(3, "Tr"),
+                new Card(4, "Pi"),
+                new Card(5, "Pi")));
         cards2Start = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
                 new Card(4, "Co"),
                 new Card(6, "Tr"),
@@ -70,6 +77,7 @@ public class SuiteTest
         assertFalse(Suite.isTypeOf(cards10Carree));
         assertTrue(Suite.isTypeOf(cards5start));
         assertTrue(Suite.isTypeOf(cards5startMixed));
+        assertTrue(Suite.isTypeOf(cardsAstart));
 
     }
 
@@ -81,6 +89,8 @@ public class SuiteTest
 
         Suite suite5Mixed = new Suite(cards5startMixed);
 
+        Suite suiteA = new Suite(cardsAstart);
+
         Paire paire = new Paire(cards2Pair);
 
         Carre carre = new Carre(cards10Carree);
@@ -89,7 +99,7 @@ public class SuiteTest
         //********************************************************
 
         // suite5Start > suite2Start
-        Assert.assertEquals(1, suite5Start.compareTo(suite2Start));
+        Assert.assertEquals(1, suite5Start.compareTo(suiteA));
         // suite2Start < suite5Start
         Assert.assertEquals(-1, suite2Start.compareTo(suite5Start));
         // Suite5Start = Suite5Mixed
