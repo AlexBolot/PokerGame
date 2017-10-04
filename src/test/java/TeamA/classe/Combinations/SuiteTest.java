@@ -1,11 +1,15 @@
 package TeamA.classe.Combinations;
 
 import TeamA.classe.Card;
+import jdk.internal.util.xml.impl.Pair;
 import org.junit.Assert;
 import org.junit.Test;
-
+import org.junit.Before;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -23,33 +27,77 @@ import java.util.Arrays;
 
 public class SuiteTest
 {
+
+    private ArrayList<Card> cards5start;
+    private ArrayList<Card> cards2Start;
+    private ArrayList<Card> cards5startMixed;
+    private ArrayList<Card> cards2Pair;
+    private ArrayList<Card> cards10Carree;
+
+    @Before
+    public void init() {
+
+        cards5start = new ArrayList<>(Arrays.asList(new Card(5, "Ca"),
+                new Card(6, "Co"),
+                new Card(7, "Tr"),
+                new Card(8, "Pi"),
+                new Card(9, "Pi")));
+        cards2Start = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                new Card(4, "Co"),
+                new Card(6, "Tr"),
+                new Card(5, "Pi"),
+                new Card(3, "Pi")));
+        cards5startMixed = new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
+                new Card(5, "Co"),
+                new Card(6, "Tr"),
+                new Card(7, "Pi"),
+                new Card(8, "Pi")));
+        cards2Pair = new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
+                new Card(11, "Co"),
+                new Card(6, "Tr"),
+                new Card(2, "Pi"),
+                new Card(2, "Pi")));
+        cards10Carree = new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
+                new Card(10, "Co"),
+                new Card(10, "Tr"),
+                new Card(10, "Pi"),
+                new Card(10, "Ca")));
+    }
+
     @Test
-    public void isTypeOf () throws Exception
-    {
-        Suite obj1 = new Suite(new ArrayList<>(Arrays.asList(new Card(5, "Ca"),
-                                                             new Card(6, "Co"),
-                                                             new Card(7, "Tr"),
-                                                             new Card(8, "Pi"),
-                                                             new Card(9, "Pi"))));
+    public void testIsTypeOf() {
+        //Test Right
+        assertFalse(Suite.isTypeOf(cards10Carree));
+        assertTrue(Suite.isTypeOf(cards5start));
+        assertTrue(Suite.isTypeOf(cards5startMixed));
 
-        Suite obj2 = new Suite(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                                             new Card(4, "Co"),
-                                                             new Card(6, "Tr"),
-                                                             new Card(5, "Pi"),
-                                                             new Card(3, "Pi"))));
+    }
 
-        Suite obj3 = new Suite(new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
-                                                             new Card(5, "Co"),
-                                                             new Card(6, "Tr"),
-                                                             new Card(7, "Pi"),
-                                                             new Card(8, "Pi"))));
+    @Test
+    public void testCompareTo() throws Exception {
+        Suite suite5Start = new Suite(cards5start);
 
-        // obj1 > obj2
-        Assert.assertEquals(1, obj1.compareTo(obj2));
-        // obj2 < obj1
-        Assert.assertEquals(-1, obj2.compareTo(obj1));
-        // obj1 = obj3
-        Assert.assertEquals(0, obj1.compareTo(obj3));
+        Suite suite2Start = new Suite(cards2Start);
+
+        Suite suite5Mixed = new Suite(cards5startMixed);
+
+        Paire paire = new Paire(cards2Pair);
+
+        Carre carre = new Carre(cards10Carree);
+        //********************************************************
+        // testRight
+        //********************************************************
+
+        // suite5Start > suite2Start
+        Assert.assertEquals(1, suite5Start.compareTo(suite2Start));
+        // suite2Start < suite5Start
+        Assert.assertEquals(-1, suite2Start.compareTo(suite5Start));
+        // Suite5Start = Suite5Mixed
+        Assert.assertEquals(0, suite5Start.compareTo(suite5Mixed));
+        // paire < suite2start
+        Assert.assertEquals(1, suite2Start.compareTo(paire));
+        //carre >suite5mixed
+        Assert.assertEquals(-1, suite5Mixed.compareTo(carre));
     }
 
 }
