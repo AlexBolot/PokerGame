@@ -37,7 +37,7 @@ public class Couleur extends Combination
     public static String FindColor(ArrayList<Card> hand){
         String color = hand.get(1).getName();
         for(Card c : hand){
-            if(color != c.getName()){
+            if(!color.equals(c.getName())){
                 return null;
             }
         }
