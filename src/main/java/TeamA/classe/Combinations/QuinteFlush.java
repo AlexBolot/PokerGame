@@ -34,6 +34,8 @@ public class QuinteFlush extends Combination
     public QuinteFlush (ArrayList<Card> hand)
     {
         super(hand);
+        start=FindQuinteFlush(hand);
+        setValue(8);
     }
     public static Card FindQuinteFlush(ArrayList<Card> cards) {
         if (Couleur.isTypeOf(cards)) {
