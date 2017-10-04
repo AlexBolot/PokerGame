@@ -29,6 +29,7 @@ public class Suite extends Combination
 
     public void setStart(Card start) {
         this.start = start;
+
     }
 
     public Suite (ArrayList<Card> hand)
@@ -45,9 +46,15 @@ public class Suite extends Combination
         Collections.sort(cards);
         int s=0;
         for (int i = 0; i < 4; i++) {
+
             if (cards.get(i).getValue()+1==cards.get(i+1).getValue()){
                 s++;
             }
+        }
+        if (cards.get(4).getValue() == 14) {
+            ArrayList<Card> clone = (ArrayList<Card>) cards.clone();
+            clone.get(4).setValue(1);
+            return FindSuite(clone);
         }
         return s == 4 ? cards.get(0) : null;
     }
