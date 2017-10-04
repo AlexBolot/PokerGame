@@ -46,4 +46,14 @@ public class Full extends Combination
     public static boolean isTypeOf(ArrayList<Card> cards){
         return(false);
     }
+
+    @Override
+    public int compareTo(Combination o) {
+        int combCompare = super.compareTo(o);
+        if (combCompare != 0) return combCompare;
+        Full otherFull = (Full) o;
+        int bCompare = this.getTriplet().compareTo(otherFull.getTriplet());
+        return bCompare;
+
+    }
 }
