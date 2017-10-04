@@ -39,7 +39,10 @@ public class Hand
 
     public Combination findBestCombination ()
     {
+        if (QuinteFlush.isTypeOf(hand)) return new QuinteFlush(hand);
+        if (Carre.isTypeOf(hand)) return new Carre(hand);
         if (Full.isTypeOf(hand)) return new Full(hand);
+        if (Couleur.isTypeOf(hand)) return new Couleur(hand);
         if (Suite.isTypeOf(hand)) return new Suite(hand);
         if (Brelan.isTypeOf(hand)) return new Brelan(hand);
         if (DoublePaire.isTypeOf(hand)) return new DoublePaire(hand);
