@@ -4,6 +4,10 @@ import TeamA.classe.Card;
 
 import java.util.ArrayList;
 
+import static TeamA.classe.Combinations.Brelan.FindBrelan;
+import static TeamA.classe.Combinations.Paire.FindPaire;
+
+
 /*................................................................................................................................
  . Copyright (c)
  .
@@ -42,9 +46,33 @@ public class Full extends Combination
     public Full (ArrayList<Card> hand)
     {
         super(hand);
+        Card[] cards = FindFull(hand);
+        triplet = cards[0];
+        paire = cards[1];
+        setValue(6);
     }
     public static boolean isTypeOf(ArrayList<Card> cards){
-        return(false);
+        return(FindFull(cards)!=null);
+    }
+
+    public static Card[] FindFull(ArrayList<Card> cards){
+        Card card = null;
+        Card cardP = null;
+        Card[] tab = new Card[2];
+        if (Brelan.isTypeOf(cards))
+        {
+            card = FindBrelan(cards);
+            if(Paire.isTypeOf(cards));
+            {
+                cardP = FindPaire(cards);
+                tab[0] = card;
+                tab[1] = cardP;
+                return (tab);
+            }
+
+        }
+        return null;
+
     }
 
     @Override

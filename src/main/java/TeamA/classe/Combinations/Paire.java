@@ -40,7 +40,7 @@ public class Paire extends Combination {
         return FindPaire(cards) != null;
     }
 
-    private static Card FindPaire (ArrayList<Card> hand) {
+    public static Card FindPaire (ArrayList<Card> hand) {
         int[] tab = new int[15];
         int compteur = 0;
         Card card = null;
