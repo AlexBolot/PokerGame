@@ -16,7 +16,7 @@ import java.util.Random;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 26/09/17 08:45
+ . Last Modified : 04/10/17 14:39
  ...............................................................................................................................*/
 
 public class TestingUtils
@@ -30,10 +30,10 @@ public class TestingUtils
 
         for (int i = 2; i < 11; i++)
         {
-            allCards.add(new Card(i, "TR"));
-            allCards.add(new Card(i, "PI"));
-            allCards.add(new Card(i, "CA"));
-            allCards.add(new Card(i, "CO"));
+            allCards.add(new Card(i, "Tr"));
+            allCards.add(new Card(i, "Pi"));
+            allCards.add(new Card(i, "Ca"));
+            allCards.add(new Card(i, "Co"));
         }
 
         return allCards;
