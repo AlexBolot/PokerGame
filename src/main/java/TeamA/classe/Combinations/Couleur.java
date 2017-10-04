@@ -35,24 +35,10 @@ public class Couleur extends Combination
         return Couleur.FindColor(hand) != null;
     }
     public static String FindColor(ArrayList<Card> hand){
-        HashMap<String,Integer> tab = new HashMap<String, Integer>();
-        String color = null;
-        int val;
-
-        for (Card c : hand)
-        {
-            if(tab.get(c.getName()) == null)
-                val = 1;
-            else
-                val = tab.get(c.getName()) + 1;
-            tab.put(c.getName(),val);
-        }
-
-        for (String mapKey : tab.keySet())
-        {
-            if (tab.get(mapKey) == 5)
-            {
-                color = mapKey;
+        String color = hand.get(1).getName();
+        for(Card c : hand){
+            if(color != c.getName()){
+                return null;
             }
         }
         return color;
