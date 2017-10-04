@@ -4,6 +4,8 @@ import TeamA.classe.Card;
 
 import java.util.ArrayList;
 
+import static TeamA.classe.Combinations.Suite.FindSuite;
+
 /*................................................................................................................................
  . Copyright (c)
  .
@@ -33,8 +35,16 @@ public class QuinteFlush extends Combination
     {
         super(hand);
     }
+    public static Card FindQuinteFlush(ArrayList<Card> cards) {
+        if (Couleur.isTypeOf(cards)) {
+            if (Suite.isTypeOf(cards)) {
+                return (FindSuite(cards));
+            }
+        }
+        return null;
+    }
     public static boolean isTypeOf(ArrayList<Card> cards){
-        return(false);
+        return(FindQuinteFlush(cards)!=null);
     }
 
     @Override
