@@ -3,6 +3,7 @@ package TeamA.classe.Combinations;
 import TeamA.classe.Card;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -33,10 +34,24 @@ public class Suite extends Combination
     public Suite (ArrayList<Card> hand)
     {
         super(hand);
+        start=FindSuite(hand);
+        setValue(5);
     }
     public static boolean isTypeOf(ArrayList<Card> cards){
-        return(false);
+
+        return(FindSuite(cards)!=null);
     }
+    public static Card FindSuite(ArrayList<Card> cards) {
+        Collections.sort(cards);
+        int s=0;
+        for (int i = 0; i < 4; i++) {
+            if (cards.get(i).getValue()+1==cards.get(i+1).getValue()){
+                s++;
+            }
+        }
+        return s == 4 ? cards.get(0) : null;
+    }
+
 
     @Override
     public int compareTo(Combination o) {

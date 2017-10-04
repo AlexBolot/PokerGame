@@ -39,6 +39,7 @@ public class Hand
 
     public Combination findBestCombination ()
     {
+        if (Suite.isTypeOf(hand)) return new Suite(hand);
         if (Brelan.isTypeOf(hand)) return new Brelan(hand);
         if (DoublePaire.isTypeOf(hand)) return new DoublePaire(hand);
         if (Paire.isTypeOf(hand)) return (new Paire(hand));
