@@ -18,20 +18,17 @@ import java.util.ArrayList;
  . Last Modified : 02/10/17 23:48
  ...............................................................................................................................*/
 
-public class Paire extends Combination
-{
+public class Paire extends Combination {
     private Card paire;
 
-    public Paire (ArrayList<Card> hand)
-    {
+    public Paire (ArrayList<Card> hand) {
         super(hand);
         paire = FindPaire(hand);
 
         //noinspection unchecked
         ArrayList<Card> reducedHand = (ArrayList<Card>) hand.clone();
 
-        for (Card c : hand)
-        {
+        for (Card c : hand) {
             if (c.compareTo(paire) == 0) reducedHand.remove(c);
         }
 
@@ -39,23 +36,28 @@ public class Paire extends Combination
         this.setValue(1);
     }
 
-    public static boolean isTypeOf (ArrayList<Card> cards)
-    {
+    public static boolean isTypeOf (ArrayList<Card> cards) {
         return FindPaire(cards) != null;
     }
 
-    private static Card FindPaire (ArrayList<Card> hand)
-    {
-        for (int i = 0; i < 5; i++)
-        {
-            for (int j = i + 1; j < 5; j++)
-            {
-                if (hand.get(j).compareTo(hand.get(i)) == 0) return (hand.get(i));
+    private static Card FindPaire (ArrayList<Card> hand) {
+        int[] tab = new int[15];
+        int compteur = 0;
+        Card card = null;
+        for (Card c : hand) {
+            tab[c.getValue()] += 1;
+        }
+        for (int i = 0; i < tab.length; i++) {
+            // si la carte est en double alors on la stock dans un tableau
+            if (tab[i] == 2) {
+                card = new Card(i, "");
+                compteur++;
             }
         }
-
-        return null;
+        return compteur == 1 ? card : null;
     }
+
+
 
     public Card getPaire ()
     {
