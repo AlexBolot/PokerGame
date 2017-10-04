@@ -29,6 +29,7 @@ public class PaireTest
     private ArrayList<Card> cards7pair;
     private ArrayList<Card> cards8pairMixed;
     private ArrayList<Card> cardsNoPair;
+    private ArrayList<Card> cardsBrelan;
 
     @Before
     public void init ()
@@ -59,6 +60,11 @@ public class PaireTest
                                                     new Card(8, "Tr"),
                                                     new Card(4, "Pi"),
                                                     new Card(3, "Pi")));
+        cardsBrelan = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                new Card(5, "Co"),
+                new Card(5, "Tr"),
+                new Card(5, "Pi"),
+                new Card(3, "Pi")));
     }
 
     @Test
@@ -80,6 +86,7 @@ public class PaireTest
     {
         assertTrue(Paire.isTypeOf(cards8Pair)); //DoublePaire
         assertFalse(Paire.isTypeOf(cardsNoPair)); //PlusHauteCarte
+        assertFalse(Paire.isTypeOf(cardsBrelan)); //Brelan
     }
 
     @Test
