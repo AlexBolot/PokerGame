@@ -100,4 +100,10 @@ public class PaireTest
         assertEquals(-1, paire2.compareTo(paire1));
         assertEquals(1, paire1Bis.compareTo(paire2));
     }
+
+    @Test
+    public void testToString() {
+        Paire p7 = new Paire(cards7pair);
+        assertEquals("Paire de 7", p7.toString());
+    }
 }
