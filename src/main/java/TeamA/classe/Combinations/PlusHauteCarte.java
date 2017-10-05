@@ -3,6 +3,7 @@ package TeamA.classe.Combinations;
 import TeamA.classe.Card;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -15,32 +16,38 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 02/10/17 23:48
+ . Last Modified : 05/10/17 10:10
  ...............................................................................................................................*/
 
-public class PlusHauteCarte extends Combination {
-   public int compareTo(PlusHauteCarte phc) {
-       //fixme : plus haute carte doit pouvoir se comparer a d'autre combinaisons, faire un appel du super.compareto
-
-       int result;
-       ArrayList<Card> reste1 = (ArrayList<Card>) this.getRestOfCards().clone();
-       ArrayList<Card> reste2 = (ArrayList<Card>) phc.getRestOfCards().clone();
-
-        while (reste1.size()>0 && reste2.size()>0) {
-            result = gethighestcard(reste1).compareTo(gethighestcard(reste2));
-            if (result!=0) {
-                return (result);
-            }
-            reste1.remove(reste1.indexOf(gethighestcard(reste1)));
-            reste2.remove(reste2.indexOf(gethighestcard(reste2)));
-        }
-        return(0);
-   }
-
-    public PlusHauteCarte(ArrayList<Card> hand) {
+@SuppressWarnings ("unchecked")
+public class PlusHauteCarte extends Combination
+{
+    public PlusHauteCarte (ArrayList<Card> hand)
+    {
         super(hand);
         setValue(0);
     }
 
+    @Override
+    public int compareTo (Combination phc)
+    {
+        int result = super.compareTo(phc);
 
+        if (result != 0) return result;
+
+        Collections.sort(this.getRestOfCards(), Collections.<Card>reverseOrder());
+        Collections.sort(phc.getRestOfCards(), Collections.<Card>reverseOrder());
+
+        for (int i = 0; i < this.getRestOfCards().size(); i++)
+        {
+            Card thisCard = this.getRestOfCards().get(i);
+            Card phcCard = phc.getRestOfCards().get(i);
+
+            result = thisCard.compareTo(phcCard);
+
+            if (result != 0) return result;
+        }
+
+        return 0;
+    }
 }
