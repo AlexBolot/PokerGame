@@ -62,7 +62,7 @@ public class Full extends Combination
         if (Brelan.isTypeOf(cards))
         {
             card = FindBrelan(cards);
-            if(Paire.isTypeOf(cards));
+            if(Paire.isTypeOf(cards))
             {
                 cardP = FindPaire(cards);
                 tab[0] = card;
