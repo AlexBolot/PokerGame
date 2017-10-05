@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 02/10/17 23:26
+ . Last Modified : 05/10/17 12:04
  ...............................................................................................................................*/
 
 public class DoublePaireTest
@@ -103,4 +103,10 @@ public class DoublePaireTest
         assertEquals(0, dp1.compareTo(dp3));
     }
 
+    @Test
+    public void testToString ()
+    {
+        DoublePaire doublePaire = new DoublePaire(obj1);
+        assertEquals("DoublePaire avec paire de 8 et de 2", doublePaire.toString());
+    }
 }
