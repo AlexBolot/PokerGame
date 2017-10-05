@@ -55,4 +55,10 @@ public class QuinteFlush extends Combination
         if (comCompare != 0) return comCompare;
         return this.getStart().compareTo(((QuinteFlush) o).getStart());
     }
+    public String toString() {
+        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
+        sb.append(" de ");
+        sb.append(this.getStart());
+        return sb.toString();
+    }
 }

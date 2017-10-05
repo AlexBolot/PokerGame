@@ -45,18 +45,19 @@ public class Suite extends Combination
     public static Card FindSuite(ArrayList<Card> cards) {
         Collections.sort(cards);
         int s=0;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < cards.size()-1; i++) {
 
             if (cards.get(i).getValue()+1==cards.get(i+1).getValue()){
                 s++;
             }
         }
+        if (s==4) return cards.get(0);
         if (cards.get(4).getValue() == 14) {
             ArrayList<Card> clone = (ArrayList<Card>) cards.clone();
             clone.get(4).setValue(1);
             return FindSuite(clone);
         }
-        return s == 4 ? cards.get(0) : null;
+        return null;
     }
 
 
