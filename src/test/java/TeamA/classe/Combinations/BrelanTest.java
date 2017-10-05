@@ -109,4 +109,10 @@ public class BrelanTest
         assertEquals(-1, brelan2.compareTo(brelan1));
         assertEquals(0, brelan1.compareTo(brelan3));
     }
+
+    @Test
+    public void testToString() {
+        Brelan b8 = new Brelan(obj1);
+        assertEquals("Brelan de 8", b8.toString());
+    }
 }
