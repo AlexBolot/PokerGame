@@ -84,4 +84,14 @@ public class Full extends Combination
         return bCompare;
 
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
+        sb.append(" au ");
+        sb.append(this.getTriplet());
+        sb.append(" par les ");
+        sb.append(this.getPaire());
+        return sb.toString();
+    }
 }

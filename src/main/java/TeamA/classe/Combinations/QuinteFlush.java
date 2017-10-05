@@ -22,6 +22,8 @@ import static TeamA.classe.Combinations.Suite.FindSuite;
 
 public class QuinteFlush extends Combination
 {
+    private Card start;
+
     public Card getStart() {
         return start;
     }
@@ -29,8 +31,6 @@ public class QuinteFlush extends Combination
     public void setStart(Card start) {
         this.start = start;
     }
-
-    private Card start;
     public QuinteFlush (ArrayList<Card> hand)
     {
         super(hand);
@@ -47,5 +47,12 @@ public class QuinteFlush extends Combination
     }
     public static boolean isTypeOf(ArrayList<Card> cards){
         return(FindQuinteFlush(cards)!=null);
+    }
+
+    @Override
+    public int compareTo(Combination o) {
+        int comCompare = super.compareTo(o);
+        if (comCompare != 0) return comCompare;
+        return this.getStart().compareTo(((QuinteFlush) o).getStart());
     }
 }

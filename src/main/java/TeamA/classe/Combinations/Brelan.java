@@ -89,4 +89,12 @@ public class Brelan extends Combination
 
         return phc1.compareTo(phc2);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
+        sb.append(" de ");
+        sb.append(this.getTriplet());
+        return sb.toString();
+    }
 }

@@ -1,7 +1,6 @@
 package TeamA.classe.Combinations;
 
 import TeamA.classe.Card;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -84,4 +83,9 @@ public class FullTest
         assertEquals(0, obj1.compareTo(obj3));
     }
 
+    @Test
+    public void testToString() {
+        Full f8p5 = new Full(cardsB8P5);
+        assertEquals("Full au 8 par les 5", f8p5.toString());
+    }
 }

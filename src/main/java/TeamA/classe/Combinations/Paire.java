@@ -86,4 +86,12 @@ public class Paire extends Combination {
 
         return reste.compareTo(autreReste);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
+        sb.append(" de ");
+        sb.append(this.getPaire());
+        return sb.toString();
+    }
 }
