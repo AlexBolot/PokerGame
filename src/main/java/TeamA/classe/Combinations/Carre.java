@@ -81,4 +81,12 @@ public class Carre extends Combination
 
         return phc1.compareTo(phc2);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
+        sb.append(" de ");
+        sb.append(this.getQuartet().getValue());
+        return sb.toString();
+    }
 }
