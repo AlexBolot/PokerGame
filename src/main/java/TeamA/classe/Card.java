@@ -11,7 +11,7 @@ package TeamA.classe;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 02/10/17 23:03
+ . Last Modified : 05/10/17 11:41
  ...............................................................................................................................*/
 
 public class Card implements Comparable<Card>
@@ -63,7 +63,32 @@ public class Card implements Comparable<Card>
     @Override
     public String toString ()
     {
-        return getValue() + getName();
+        String strValue;
+        switch (getValue())
+        {
+            case 11:
+                strValue = "V";
+                break;
+
+            case 12:
+                strValue = "D";
+                break;
+
+            case 13:
+                strValue = "R";
+                break;
+
+            case 14:
+                strValue = "A";
+                break;
+
+            default:
+                strValue = String.valueOf(getValue());
+                break;
+        }
+
+
+        return strValue + getName();
     }
 }
 
