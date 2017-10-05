@@ -15,13 +15,12 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 02/10/17 23:25
+ . Last Modified : 05/10/17 11:52
  ...............................................................................................................................*/
 
 abstract public class Combination implements Comparable<Combination>
 {
     private ArrayList<Card> restOfCards = new ArrayList<>();
-    private String name;
     private int    value;
 
     public Combination (ArrayList<Card> restOfCards)
@@ -37,16 +36,6 @@ abstract public class Combination implements Comparable<Combination>
     public void setRestOfCards (ArrayList<Card> restOfCards)
     {
         this.restOfCards = restOfCards;
-    }
-
-    public String getName ()
-    {
-        return name;
-    }
-
-    public void setName (String name)
-    {
-        this.name = name;
     }
 
     public int getValue ()
