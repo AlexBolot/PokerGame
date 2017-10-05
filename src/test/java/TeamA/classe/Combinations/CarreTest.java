@@ -99,4 +99,10 @@ public class CarreTest
         assertEquals(0, Carre3.compareTo(Carre1));
     }
 
+    @Test
+    public void testToString() {
+        Carre b8 = new Carre(obj1);
+        assertEquals("Carre de 8", b8.toString());
+    }
+
 }
