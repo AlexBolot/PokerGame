@@ -31,7 +31,15 @@ public abstract class Parser
                 "Entrez 5 cartes (c'est à dire un chiffre de 2 à 10 et V=Valet, D=Dame, R=Roi, A=As et deux lettres pour la couleur TR=trèle, CO=coeur, CA=carreau, PI=Pique)");
 
         String line = sc.nextLine();
-        return parseCards(line);
+
+        try
+        {
+        return parseCards(line);}
+        catch (IllegalArgumentException iae)
+        {
+            printError(iae.getMessage());
+            return readCards();
+        }
     }
 
     private static Hand parseCards (String line)
@@ -40,10 +48,18 @@ public abstract class Parser
         stringCardsArray = line.split(" ");
 
         if (stringCardsArray.length != 5)
-            printErrorAndRestart("Vous avez saisi " + stringCardsArray.length + " Carte(s), veuillez en saisir 5");
-
-        return new Hand(getCard(stringCardsArray));
+            throw new IllegalArgumentException("Vous avez saisi " + stringCardsArray.length + " Carte(s), veuillez en saisir 5");
+        try {
+            return new Hand(getCard(stringCardsArray));
+        }
+        catch (IllegalArgumentException iae)
+            {
+                printError(iae.getMessage());
+                return readCards();
+            }
     }
+
+
 
     private static ArrayList<Card> getCard (String[] stringCardsArray)
     {
@@ -54,7 +70,7 @@ public abstract class Parser
             String stringCard = stringCardsArray[i];
             int stringCardLength = stringCard.length();
 
-            if (stringCardLength < 3) printErrorAndRestart("La carte a été mal saisie, veuillez réessayer.");
+            if (stringCardLength < 3) throw new IllegalArgumentException("La carte a été mal saisie, veuillez réessayer.");
 
             String stringVal = stringCard.substring(0, stringCardLength - 2);
             String color = stringCard.substring(stringCardLength - 2);
@@ -65,7 +81,7 @@ public abstract class Parser
                 intVal = Integer.parseInt(stringVal);
 
                 if (intVal > 10 || intVal < 2)
-                    printErrorAndRestart("Vous avez saisi  " + intVal + " Veuillez rentrer un nombre entre 2 et 10");
+                    throw new IllegalArgumentException("Vous avez saisi  " + intVal + " Veuillez rentrer un nombre entre 2 et 10");
             }
             else
             {
@@ -88,16 +104,16 @@ public abstract class Parser
                         break;
 
                     default:
-                        printErrorAndRestart(stringCard + " est incorrecte, veuillez saisir une carte correcte. ");
+                        throw new IllegalArgumentException(stringCard + " est incorrecte, veuillez saisir une carte correcte. ");
                 }
             }
 
             if (!color.equals("Pi") && !color.equals("Co") && !color.equals("Ca") && !color.equals("Tr"))
-                printErrorAndRestart(color + "n'est pas une couleur existante dans le Poker.");
+                throw new IllegalArgumentException(color + "n'est pas une couleur existante dans le Poker.");
 
             Card card = new Card(intVal, color);
 
-            if (typedCards.contains(card)) printErrorAndRestart(card + " a déjà été saisi");
+            if (typedCards.contains(card)) throw new IllegalArgumentException(card + " a déjà été saisi");
 
             typedCards.add(card);
             hand.add(card);
@@ -105,10 +121,13 @@ public abstract class Parser
         return hand;
     }
 
-    private static void printErrorAndRestart (String message)
+    private static void printError (String message)
     {
+        while (typedCards.size()%5!=0)
+        {
+            typedCards.remove(typedCards.size() - 1);
+        }
         System.out.println(message);
-        readCards();
     }
 
     private static boolean isInteger (String s)
