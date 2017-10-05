@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 03/10/17 18:24
+ . Last Modified : 05/10/17 11:57
  ...............................................................................................................................*/
 
 public class DoublePaire extends Combination
@@ -118,5 +118,11 @@ public class DoublePaire extends Combination
         PlusHauteCarte phc2 = new PlusHauteCarte(doublePaire.getRestOfCards());
 
         return phc1.compareTo(phc2);
+    }
+
+    @Override
+    public String toString ()
+    {
+        return this.getClass().getSimpleName() + " avec paire de " + getStrongPaire() + " et de " + getWeakPaire();
     }
 }

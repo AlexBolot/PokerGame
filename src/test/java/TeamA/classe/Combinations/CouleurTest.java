@@ -1,16 +1,13 @@
 package TeamA.classe.Combinations;
 
 import TeamA.classe.Card;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -23,7 +20,7 @@ import static org.junit.Assert.assertTrue;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 26/09/17 16:46
+ . Last Modified : 05/10/17 12:04
  ...............................................................................................................................*/
 
 public class CouleurTest
@@ -34,52 +31,53 @@ public class CouleurTest
     public void init ()
     {
         obj1 = new ArrayList<>(Arrays.asList(new Card(7, "Co"),
-                new Card(8, "Co"),
-                new Card(8, "Co"),
-                new Card(5, "Co"),
-                new Card(4, "Co")));
+                                             new Card(8, "Co"),
+                                             new Card(8, "Co"),
+                                             new Card(5, "Co"),
+                                             new Card(4, "Co")));
 
         // obj1 > obj2
         obj2 = new ArrayList<>(Arrays.asList(new Card(6, "Ca"),
-                new Card(3, "Ca"),
-                new Card(6, "Ca"),
-                new Card(6, "Ca"),
-                new Card(4, "Ca")));
+                                             new Card(3, "Ca"),
+                                             new Card(6, "Ca"),
+                                             new Card(6, "Ca"),
+                                             new Card(4, "Ca")));
 
         // obj3 = obj1
         obj3 = (new ArrayList<>(Arrays.asList(new Card(7, "Tr"),
-                new Card(8, "Tr"),
-                new Card(8, "Tr"),
-                new Card(5, "Tr"),
-                new Card(4, "Tr"))));
+                                              new Card(8, "Tr"),
+                                              new Card(8, "Tr"),
+                                              new Card(5, "Tr"),
+                                              new Card(4, "Tr"))));
 
         // Carre
         obj4 = (new ArrayList<>(Arrays.asList(new Card(4, "Ca"),
-                new Card(8, "Tr"),
-                new Card(8, "Co"),
-                new Card(8, "Pi"),
-                new Card(8, "Pi"))));
+                                              new Card(8, "Tr"),
+                                              new Card(8, "Co"),
+                                              new Card(8, "Pi"),
+                                              new Card(8, "Pi"))));
 
         // DoublePaire
         obj5 = (new ArrayList<>(Arrays.asList(new Card(4, "Ca"),
-                new Card(8, "Tr"),
-                new Card(8, "Co"),
-                new Card(6, "Pi"),
-                new Card(4, "Pi"))));
+                                              new Card(8, "Tr"),
+                                              new Card(8, "Co"),
+                                              new Card(6, "Pi"),
+                                              new Card(4, "Pi"))));
         // Paire
         obj6 = (new ArrayList<>(Arrays.asList(new Card(3, "Ca"),
-                new Card(6, "Tr"),
-                new Card(3, "Co"),
-                new Card(2, "Pi"),
-                new Card(4, "Pi"))));
+                                              new Card(6, "Tr"),
+                                              new Card(3, "Co"),
+                                              new Card(2, "Pi"),
+                                              new Card(4, "Pi"))));
 
         // PlusHauteCarte
         obj6 = (new ArrayList<>(Arrays.asList(new Card(3, "Ca"),
-                new Card(2, "Tr"),
-                new Card(3, "Co"),
-                new Card(2, "Pi"),
-                new Card(4, "Pi"))));
+                                              new Card(2, "Tr"),
+                                              new Card(3, "Co"),
+                                              new Card(2, "Pi"),
+                                              new Card(4, "Pi"))));
     }
+
     @Test
     public void isTypeOf () throws Exception
     {
@@ -90,6 +88,7 @@ public class CouleurTest
         assertFalse(Couleur.isTypeOf(obj5));
         assertFalse(Couleur.isTypeOf(obj6));
     }
+
     @Test
     public void compareTo () throws Exception
     {
@@ -100,5 +99,12 @@ public class CouleurTest
         assertEquals(1, couleur1.compareTo(couleur2));
         assertEquals(-1, couleur2.compareTo(couleur1));
         assertEquals(0, couleur1.compareTo(couleur3));
+    }
+
+    @Test
+    public void testToString ()
+    {
+        Couleur couleur = new Couleur(obj1);
+        assertEquals("Couleur avec carte haute : 8Co", couleur.toString());
     }
 }

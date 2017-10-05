@@ -1,5 +1,6 @@
 package TeamA;
 
+import TeamA.classe.Combinations.Combination;
 import TeamA.classe.Hand;
 
 import static TeamA.utils.Parser.readCards;
@@ -15,7 +16,7 @@ import static TeamA.utils.Parser.readCards;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 03/10/17 19:04
+ . Last Modified : 05/10/17 12:06
  ...............................................................................................................................*/
 
 /**
@@ -27,30 +28,51 @@ public class App
     {
         System.out.println("Hello team A!");
         Hand hand1, hand2;
+
+        System.out.println(getInputFormat());
         hand1 = readCards();
         hand2 = readCards();
 
+        //5Pi 9Tr 9Pi DPi DTr
+        //4Pi 3Pi 8Co RTr VCo
+
         // TODO afficher qu'elle main a la carte la plus haute
 
+        System.out.println("\n");
         System.out.println("Main 1 : " + hand1.toString());
         System.out.println("Main 2 : " + hand2.toString());
 
-        switch (hand1.findBestCombination().compareTo(hand2.findBestCombination()))
+        Combination comb1 = hand1.findBestCombination();
+        Combination comb2 = hand2.findBestCombination();
+
+        switch (comb1.compareTo(comb2))
         {
             case 1:
-                System.out.println("La main 1 est gagnante avec " + hand1.findBestCombination().getClass().getSimpleName());
+                System.out.println("La main 1 est gagnante avec " + comb1.toString());
                 break;
 
             case -1:
-                System.out.println("La main 2 est gagnante avec " + hand2.findBestCombination().getClass().getSimpleName());
+                System.out.println("La main 2 est gagnante avec " + comb2.getClass().getSimpleName());
                 break;
 
             case 0:
-                System.out.println("Egalité avec " + hand1.findBestCombination().getClass().getSimpleName());
+                System.out.println("Egalité avec " + comb1.getClass().getSimpleName());
                 break;
 
             default:
                 System.out.println("Something went wrong");
         }
+    }
+
+    private static String getInputFormat ()
+    {
+        StringBuilder str = new StringBuilder();
+
+        str.append("Format : chiffre de 2 à 10 ou V (valet), D (dame), R (roi), A (as)");
+        str.append("\n");
+        str.append("suivi par 2 lettres : Ca (carreau), Co (coeur), Tr (trèfle), Pi (pique)");
+        str.append("\n");
+        str.append("\n");
+        return str.toString();
     }
 }
