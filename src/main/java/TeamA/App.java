@@ -16,7 +16,7 @@ import static TeamA.utils.Parser.readCards;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 05/10/17 12:06
+ . Last Modified : 06/10/17 23:16
  ...............................................................................................................................*/
 
 /**
@@ -35,8 +35,6 @@ public class App
 
         //5Pi 9Tr 9Pi DPi DTr
         //4Pi 3Pi 8Co RTr VCo
-
-        // TODO afficher qu'elle main a la carte la plus haute
 
         System.out.println("\n");
         System.out.println("Main 1 : " + hand1.toString());

@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 03/10/17 18:15
+ . Last Modified : 06/10/17 22:55
  ...............................................................................................................................*/
 
 public class BrelanTest
@@ -113,6 +113,6 @@ public class BrelanTest
     @Test
     public void testToString() {
         Brelan b8 = new Brelan(obj1);
-        assertEquals("Brelan de 8", b8.toString());
+        assertEquals("Brelan de 8Ca", b8.toString());
     }
 }

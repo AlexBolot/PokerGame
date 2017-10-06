@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 26/09/17 16:50
+ . Last Modified : 06/10/17 22:56
  ...............................................................................................................................*/
 
 public class FullTest
@@ -86,6 +86,6 @@ public class FullTest
     @Test
     public void testToString() {
         Full f8p5 = new Full(cardsB8P5);
-        assertEquals("Full au 8 par les 5", f8p5.toString());
+        assertEquals("Full au 8Ca par les 5Ca", f8p5.toString());
     }
 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 06/10/17 22:35
  ...............................................................................................................................*/
 
 public class Carre extends Combination
@@ -60,7 +60,7 @@ public class Carre extends Combination
         {
             if (tab[i] == 4)
             {
-                carteCarre = new Card(i, "");
+                carteCarre = new Card(i, "Ca");
             }
         }
         return carteCarre;

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 03/10/17 18:23
+ . Last Modified : 06/10/17 22:35
  ...............................................................................................................................*/
 
 public class Brelan extends Combination
@@ -52,7 +52,7 @@ public class Brelan extends Combination
         {
             if (tab[i] == 3)
             {
-                carteBrelan = new Card(i, "");
+                carteBrelan = new Card(i, "Ca");
             }
         }
         return carteBrelan;

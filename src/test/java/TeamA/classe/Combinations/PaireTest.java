@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 02/10/17 23:41
+ . Last Modified : 06/10/17 22:56
  ...............................................................................................................................*/
 
 public class PaireTest
@@ -104,6 +104,6 @@ public class PaireTest
     @Test
     public void testToString() {
         Paire p7 = new Paire(cards7pair);
-        assertEquals("Paire de 7", p7.toString());
+        assertEquals("Paire de 7Ca", p7.toString());
     }
 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 21:16
+ . Last Modified : 06/10/17 22:35
  ...............................................................................................................................*/
 
 public class Paire extends Combination {
@@ -50,7 +50,7 @@ public class Paire extends Combination {
         for (int i = 0; i < tab.length; i++) {
             // si la carte est en double alors on la stock dans un tableau
             if (tab[i] == 2) {
-                card = new Card(i, "");
+                card = new Card(i, "Ca");
                 compteur++;
             }
         }

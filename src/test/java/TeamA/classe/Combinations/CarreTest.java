@@ -22,7 +22,7 @@ import static org.junit.Assert.assertFalse;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 26/09/17 16:42
+ . Last Modified : 06/10/17 22:55
  ...............................................................................................................................*/
 
 public class CarreTest
@@ -102,7 +102,7 @@ public class CarreTest
     @Test
     public void testToString() {
         Carre b8 = new Carre(obj1);
-        assertEquals("Carre de 8", b8.toString());
+        assertEquals("Carre de 8Ca", b8.toString());
     }
 
 }

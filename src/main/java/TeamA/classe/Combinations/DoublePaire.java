@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 05/10/17 11:57
+ . Last Modified : 06/10/17 22:35
  ...............................................................................................................................*/
 
 public class DoublePaire extends Combination
@@ -71,7 +71,7 @@ public class DoublePaire extends Combination
             // si la carte est en double alors on la stock dans un tableau
             if (tab[i] == 2)
             {
-                returntab[compteur] = new Card(i, "");
+                returntab[compteur] = new Card(i, "Ca");
                 compteur++;
             }
         }
