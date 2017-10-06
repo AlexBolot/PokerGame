@@ -1,15 +1,13 @@
 package TeamA.classe;
 
-import TeamA.classe.Combinations.PlusHauteCarte;
-import org.junit.Assert;
-import org.junit.Before;
+import TeamA.classe.Combinations.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
-import static TeamA.TestingUtils.getAllCards;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -22,53 +20,55 @@ import static TeamA.TestingUtils.getAllCards;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 26/09/17 16:52
+ . Last Modified : 06/10/17 23:42
  ...............................................................................................................................*/
 
 @SuppressWarnings ("Duplicates")
 public class HandTest
 {
-    private        ArrayList<Card> cards    = new ArrayList<>();
-    private Hand hand;
-
-    @Before
-    public void before ()
+    //region //============= Constructor (x4) =============//
+    @Test
+    public void constructor_Right ()
     {
-        cards.clear();
+        ArrayList<Card> cards = new ArrayList<>(Arrays.asList(new Card(5, "Ca"),
+                                                              new Card(6, "Co"),
+                                                              new Card(7, "Tr"),
+                                                              new Card(8, "Pi"),
+                                                              new Card(9, "Pi")));
 
-        for (int i = 0; i < 5; i++)
-        {
-            int index = new Random().nextInt(getAllCards().size());
-            cards.add(getAllCards().get(index));
-        }
+        Hand hand = new Hand(cards);
 
-        hand = new Hand(cards);
+        assertEquals(cards, hand.getHand());
     }
 
-    @Test
-    public void getHand () throws Exception
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_EmptyList ()
     {
-        Assert.assertEquals(cards, hand.getHand());
+        Hand hand = new Hand(new ArrayList<Card>());
     }
 
-    @Test
-    public void setHand () throws Exception
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_NullParam ()
     {
-        ArrayList<Card> newCards = new ArrayList<>();
-
-        for (int i = 0; i < 5; i++)
-        {
-            int index = new Random().nextInt(getAllCards().size());
-            newCards.add(getAllCards().get(index));
-        }
-
-        hand.setHand(newCards);
-
-        Assert.assertEquals(newCards, hand.getHand());
+        Hand hand = new Hand(null);
     }
 
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_WrongSize ()
+    {
+        //Here the size is 6 > 5
+        Hand hand = new Hand(new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
+                                                           new Card(3, "Co"),
+                                                           new Card(8, "Co"),
+                                                           new Card(5, "Pi"),
+                                                           new Card(7, "Tr"),
+                                                           new Card(5, "Ca"))));
+    }
+    //endregion ===========================================//
+
+    //region //============ findBestCombination ===========//
     @Test
-    public void findBestCombination () throws Exception
+    public void findBestCombination ()
     {
         //region PlusHauteCarte
         Hand hand0 = new Hand(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
@@ -87,11 +87,11 @@ public class HandTest
         //endregion
 
         //region DoublePaire
-        Hand hand2 = new Hand(new ArrayList<>(Arrays.asList(new Card(2, ""),
-                                                            new Card(3, ""),
-                                                            new Card(2, ""),
-                                                            new Card(3, ""),
-                                                            new Card(5, ""))));
+        Hand hand2 = new Hand(new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
+                                                            new Card(3, "Tr"),
+                                                            new Card(2, "Pi"),
+                                                            new Card(3, "Co"),
+                                                            new Card(5, "Co"))));
         //endregion
 
         //region Brelan
@@ -142,29 +142,29 @@ public class HandTest
                                                             new Card(6, "Co"))));
         //endregion
 
-        Assert.assertTrue(hand0.findBestCombination() instanceof PlusHauteCarte);
-
-        //Will be used in future release
-        /*Assert.assertTrue(hand1.findBestCombination() instanceof Paire);
-        Assert.assertTrue(hand2.findBestCombination() instanceof DoublePaire);
-        Assert.assertTrue(hand3.findBestCombination() instanceof Brelan);
-        Assert.assertTrue(hand4.findBestCombination() instanceof Suite);
-        Assert.assertTrue(hand5.findBestCombination() instanceof Couleur);
-        Assert.assertTrue(hand6.findBestCombination() instanceof Full);
-        Assert.assertTrue(hand7.findBestCombination() instanceof Carre);
-        Assert.assertTrue(hand8.findBestCombination() instanceof QuinteFlush);*/
+        assertTrue(hand0.findBestCombination() instanceof PlusHauteCarte);
+        assertTrue(hand1.findBestCombination() instanceof Paire);
+        assertTrue(hand2.findBestCombination() instanceof DoublePaire);
+        assertTrue(hand3.findBestCombination() instanceof Brelan);
+        assertTrue(hand4.findBestCombination() instanceof Suite);
+        assertTrue(hand5.findBestCombination() instanceof Couleur);
+        assertTrue(hand6.findBestCombination() instanceof Full);
+        assertTrue(hand7.findBestCombination() instanceof Carre);
+        assertTrue(hand8.findBestCombination() instanceof QuinteFlush);
     }
+    //endregion ===========================================//
 
+    //region //================= toString =================//
     @Test
-    public void toStringTest () throws Exception
+    public void ToString ()
     {
-        StringBuilder str = new StringBuilder();
+        Hand hand = new Hand(new ArrayList<>(Arrays.asList(new Card(5, "Ca"),
+                                                           new Card(6, "Co"),
+                                                           new Card(7, "Tr"),
+                                                           new Card(8, "Pi"),
+                                                           new Card(9, "Pi"))));
 
-        for (Card c : hand.getHand())
-        {
-            str.append(c).append(" ");
-        }
-
-        Assert.assertEquals(str.toString(), hand.toString());
+        assertEquals("5Ca 6Co 7Tr 8Pi 9Pi", hand.toString());
     }
+    //endregion ===========================================//
 }

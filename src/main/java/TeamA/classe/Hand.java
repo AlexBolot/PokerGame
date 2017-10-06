@@ -15,15 +15,18 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 03/10/17 14:03
+ . Last Modified : 06/10/17 23:20
  ...............................................................................................................................*/
 
 public class Hand
 {
     private ArrayList<Card> hand = new ArrayList<>();
 
-    public Hand (ArrayList<Card> hand)
+    public Hand (ArrayList<Card> hand) throws IllegalArgumentException
     {
+        if (hand == null) throw new IllegalArgumentException("Parameter is null");
+        if (hand.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + hand.size() + " != 5");
+
         this.hand = hand;
     }
 
@@ -60,7 +63,8 @@ public class Hand
             affHand.append(c).append(" ");
         }
 
+        affHand.deleteCharAt(affHand.length() - 1);
+
         return affHand.toString();
     }
-
 }
