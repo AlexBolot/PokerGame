@@ -9,7 +9,7 @@ import static TeamA.classe.Combinations.Suite.FindSuite;
 /*................................................................................................................................
  . Copyright (c)
  .
- . The QuiteFlush	 Class was Coded by : Team_A
+ . The QuinteFlush	 Class was Coded by : Team_A
  .
  . Members :
  . -> Alexandre Bolot
@@ -17,7 +17,7 @@ import static TeamA.classe.Combinations.Suite.FindSuite;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 06/10/17 21:45
  ...............................................................................................................................*/
 
 public class QuinteFlush extends Combination
@@ -55,10 +55,9 @@ public class QuinteFlush extends Combination
         if (comCompare != 0) return comCompare;
         return this.getStart().compareTo(((QuinteFlush) o).getStart());
     }
-    public String toString() {
-        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
-        sb.append(" de ");
-        sb.append(this.getStart());
-        return sb.toString();
+
+    @Override
+    public String toString () {
+        return this.getClass().getSimpleName() + " qui commence à " + this.getStart();
     }
 }

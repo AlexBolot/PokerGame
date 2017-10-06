@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 02/10/17 23:48
+ . Last Modified : 06/10/17 21:16
  ...............................................................................................................................*/
 
 public class Paire extends Combination {
@@ -89,9 +89,6 @@ public class Paire extends Combination {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
-        sb.append(" de ");
-        sb.append(this.getPaire());
-        return sb.toString();
+        return this.getClass().getSimpleName() + " de " + this.getPaire();
     }
 }
