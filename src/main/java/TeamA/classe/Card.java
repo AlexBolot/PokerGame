@@ -1,5 +1,7 @@
 package TeamA.classe;
 
+import java.util.Arrays;
+
 /*................................................................................................................................
  . Copyright (c)
  .
@@ -11,7 +13,7 @@ package TeamA.classe;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 05/10/17 11:41
+ . Last Modified : 06/10/17 22:23
  ...............................................................................................................................*/
 
 public class Card implements Comparable<Card>
@@ -19,8 +21,12 @@ public class Card implements Comparable<Card>
     private int    value;
     private String name;
 
-    public Card (int value, String name)
+    public Card (int value, String name) throws IllegalArgumentException
     {
+        if (value < 2 || value > 14) throw new IllegalArgumentException("Value is not in the correct bounds (min 2, max 14)");
+        if (!Arrays.asList("Ca", "Co", "Tr", "Pi").contains(name)) throw new IllegalArgumentException(
+                "Color of the card is not valid (not in {Ca, Co, Tr, Pi}");
+
         this.value = value;
         this.name = name;
     }
@@ -45,8 +51,10 @@ public class Card implements Comparable<Card>
         this.name = name;
     }
 
-    public int compareTo (Card card)
+    public int compareTo (Card card) throws IllegalArgumentException
     {
+        if (card == null) throw new IllegalArgumentException("Parameter is null");
+
         return Integer.compare(this.value, card.value);
     }
 
