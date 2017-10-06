@@ -1,16 +1,10 @@
 package TeamA.utils;
 
-import TeamA.classe.Card;
-import TeamA.classe.Hand;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import java.util.Random;
-
-import static TeamA.TestingUtils.getAllCards;
+import java.util.NoSuchElementException;
 
 /*................................................................................................................................
  . Copyright (c)
@@ -23,32 +17,71 @@ import static TeamA.TestingUtils.getAllCards;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 26/09/17 08:43
+ . Last Modified : 06/10/17 23:38
  ...............................................................................................................................*/
 
 public class ParserTest
 {
-    private Hand hand;
-
-    @Before
-    public void before ()
-    {
-        ArrayList<Card> cards1 = new ArrayList<>();
-        for (int i = 0; i < 5; i++)
-        {
-            int index = new Random().nextInt(getAllCards().size());
-            cards1.add(getAllCards().get(index));
-        }
-
-        hand = new Hand(cards1);
-    }
-
     @Test
-    public void testReadCards () throws Exception
+    public void readCards_Right ()
     {
-        ByteArrayInputStream in = new ByteArrayInputStream(hand.toString().getBytes());
+        String typed = "2Ca 3Pi 5Tr 3Ca DPi";
+
+        ByteArrayInputStream in = new ByteArrayInputStream(typed.getBytes());
         System.setIn(in);
 
-        Assert.assertEquals(hand.getHand(), Parser.readCards().getHand());
+        Assert.assertEquals(typed, Parser.readCards().toString());
+    }
+
+    //NoSuchElementExeception means an IllegalArgumentException was raised,
+    //and that Parser asked for retyping -> which couldn't be done.
+    @Test (expected = NoSuchElementException.class)
+    public void readCards_WrongSize ()
+    {
+        String typed = "2Ca 3Pi 5Tr 7Co 3Ca DPi";
+
+        ByteArrayInputStream in = new ByteArrayInputStream(typed.getBytes());
+        System.setIn(in);
+
+        Parser.readCards();
+    }
+
+    //NoSuchElementExeception means an IllegalArgumentException was raised,
+    //and that Parser asked for retyping -> which couldn't be done.
+    @Test (expected = NoSuchElementException.class)
+    public void readCards_WrongValue ()
+    {
+        String typed = "24Ca 3Pi 5Tr 7Co DPi";
+
+        ByteArrayInputStream in = new ByteArrayInputStream(typed.getBytes());
+        System.setIn(in);
+
+        Parser.readCards();
+    }
+
+    //NoSuchElementExeception means an IllegalArgumentException was raised,
+    //and that Parser asked for retyping -> which couldn't be done.
+    @Test (expected = NoSuchElementException.class)
+    public void readCards_WrongColor ()
+    {
+        String typed = "2Bi 3Pi 5Tr 7Co DPi";
+
+        ByteArrayInputStream in = new ByteArrayInputStream(typed.getBytes());
+        System.setIn(in);
+
+        Parser.readCards();
+    }
+
+    //NoSuchElementExeception means an IllegalArgumentException was raised,
+    //and that Parser asked for retyping -> which couldn't be done.
+    @Test (expected = NoSuchElementException.class)
+    public void readCards_Duplicate ()
+    {
+        String typed = "3Pi 3Pi 5Tr 7Co DPi";
+
+        ByteArrayInputStream in = new ByteArrayInputStream(typed.getBytes());
+        System.setIn(in);
+
+        Parser.readCards();
     }
 }

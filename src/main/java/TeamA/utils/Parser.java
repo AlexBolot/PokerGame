@@ -18,7 +18,7 @@ import java.util.Scanner;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 22:24
+ . Last Modified : 06/10/17 23:14
  ...............................................................................................................................*/
 
 public abstract class Parser
@@ -28,8 +28,7 @@ public abstract class Parser
     public static Hand readCards ()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.println(
-                "Entrez 5 cartes (c'est à dire un chiffre de 2 à 10 et V=Valet, D=Dame, R=Roi, A=As et deux lettres pour la couleur TR=trèle, CO=coeur, CA=carreau, PI=Pique)");
+        System.out.println("Entrez 5 cartes :");
 
         String line = sc.nextLine();
 
@@ -61,7 +60,6 @@ public abstract class Parser
             return readCards();
         }
     }
-
 
     private static ArrayList<Card> getCard (String[] stringCardsArray)
     {
