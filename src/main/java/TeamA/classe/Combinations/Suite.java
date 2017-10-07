@@ -16,7 +16,7 @@ import java.util.Collections;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 07/10/17 21:30
+ . Last Modified : 07/10/17 21:50
  ...............................................................................................................................*/
 
 @SuppressWarnings ("unchecked")
@@ -98,6 +98,6 @@ public class Suite extends Combination
     @Override
     public String toString ()
     {
-        return this.getClass().getSimpleName() + " qui commence à " + this.getStart();
+        return this.getClass().getSimpleName() + " qui commence à " + this.getStart().getStringValue();
     }
 }

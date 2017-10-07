@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 05/10/17 12:04
+ . Last Modified : 07/10/17 21:45
  ...............................................................................................................................*/
 
 public class CouleurTest
@@ -174,7 +174,7 @@ public class CouleurTest
     public void testToString ()
     {
         Couleur couleur = new Couleur(obj1);
-        assertEquals("Couleur avec carte haute : 8Co", couleur.toString());
+        assertEquals("Couleur avec carte haute : 8", couleur.toString());
     }
     //endregion ===========================================//
 }

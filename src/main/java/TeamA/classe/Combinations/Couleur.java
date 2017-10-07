@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 05/10/17 12:06
+ . Last Modified : 07/10/17 21:49
  ...............................................................................................................................*/
 
 public class Couleur extends Combination
@@ -79,6 +79,6 @@ public class Couleur extends Combination
     @Override
     public String toString ()
     {
-        return this.getClass().getSimpleName() + " avec carte haute : " + gethighestcard(getRestOfCards());
+        return this.getClass().getSimpleName() + " avec carte haute : " + gethighestcard(getRestOfCards()).getStringValue();
     }
 }

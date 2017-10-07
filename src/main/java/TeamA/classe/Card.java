@@ -13,7 +13,7 @@ import java.util.Arrays;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 22:23
+ . Last Modified : 07/10/17 21:48
  ...............................................................................................................................*/
 
 public class Card implements Comparable<Card>
@@ -34,6 +34,13 @@ public class Card implements Comparable<Card>
     public int getValue ()
     {
         return value;
+    }
+
+    public String getStringValue ()
+    {
+        String s = toString();
+
+        return s.substring(0, s.length() - 2);
     }
 
     public void setValue (int value)
@@ -87,6 +94,7 @@ public class Card implements Comparable<Card>
                 break;
 
             case 14:
+            case 1: //Dans le cas d'une suite As,2,3,4,5 l'As vaut 1 pour les comparaisons.
                 strValue = "A";
                 break;
 

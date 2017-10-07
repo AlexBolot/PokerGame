@@ -19,7 +19,7 @@ import static TeamA.classe.Combinations.Paire.FindPaire;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 23/09/17 16:42
+ . Last Modified : 07/10/17 21:50
  ...............................................................................................................................*/
 
 public class Full extends Combination
@@ -98,9 +98,9 @@ public class Full extends Combination
     public String toString() {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
         sb.append(" au ");
-        sb.append(this.getTriplet());
+        sb.append(this.getTriplet().getStringValue());
         sb.append(" par les ");
-        sb.append(this.getPaire());
+        sb.append(this.getPaire().getStringValue());
         return sb.toString();
     }
 }
