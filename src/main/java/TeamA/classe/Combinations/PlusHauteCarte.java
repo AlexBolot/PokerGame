@@ -26,6 +26,7 @@ public class PlusHauteCarte extends Combination
     {
         super(hand);
 
+        if (hand == null) throw new IllegalArgumentException("Parameter is null");
 
         setValue(0);
     }
@@ -33,7 +34,7 @@ public class PlusHauteCarte extends Combination
     @Override
     public int compareTo (Combination phc)  throws IllegalArgumentException
     {
-
+        if (phc == null) throw new IllegalArgumentException("Parameter is null");
         int result = super.compareTo(phc);
 
         if (result != 0) return result;
