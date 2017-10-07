@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 22:23
+ . Last Modified : 07/10/17 20:30
  ...............................................................................................................................*/
 
 public class CardTest
@@ -28,7 +28,7 @@ public class CardTest
     @Test
     public void constructor_Right ()
     {
-        int randVal = getRandomInt(14) + 1;
+        int randVal = getRandomInt(13) + 1;
         String randColor = Arrays.asList("Co", "Ca", "Tr", "Pi").get(getRandomInt(4));
 
         Card c = new Card(randVal, randColor);
