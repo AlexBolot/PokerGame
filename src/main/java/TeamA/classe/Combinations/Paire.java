@@ -37,11 +37,11 @@ public class Paire extends Combination {
         this.setValue(1);
     }
 
-    public static boolean isTypeOf (ArrayList<Card> cards) {
+    public static boolean isTypeOf(ArrayList<Card> cards) throws IllegalArgumentException {
         return FindPaire(cards) != null;
     }
 
-    public static Card FindPaire(ArrayList<Card> hand) throws IllegalArgumentException {
+    static Card FindPaire(ArrayList<Card> hand) throws IllegalArgumentException {
         if (hand == null) throw new IllegalArgumentException("Parameter is null");
         if (hand.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + hand.size() + " != 5");
         int[] tab = new int[15];
