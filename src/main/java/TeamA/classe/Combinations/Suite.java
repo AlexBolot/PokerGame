@@ -16,7 +16,7 @@ import java.util.Collections;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 21:44
+ . Last Modified : 07/10/17 21:30
  ...............................................................................................................................*/
 
 @SuppressWarnings ("unchecked")
@@ -63,7 +63,12 @@ public class Suite extends Combination
         if (cards.get(4).getValue() == 14)
         {
             ArrayList<Card> clone = (ArrayList<Card>) cards.clone();
-            clone.get(4).setValue(1);
+
+            Card card = new Card(cards.get(4).getValue(), cards.get(4).getName());
+            card.setValue(1);
+
+            clone.set(4, card);
+
             return FindSuite(clone);
         }
         return null;
