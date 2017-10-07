@@ -45,7 +45,8 @@ public class QuinteFlush extends Combination
         }
         return null;
     }
-    public static boolean isTypeOf(ArrayList<Card> cards){
+
+    public static boolean isTypeOf(ArrayList<Card> cards) throws IllegalArgumentException {
         return(FindQuinteFlush(cards)!=null);
     }
 
