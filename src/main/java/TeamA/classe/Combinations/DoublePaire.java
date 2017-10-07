@@ -23,9 +23,13 @@ public class DoublePaire extends Combination
     private Card strongPaire;
     private Card weakPaire;
 
-    public DoublePaire (ArrayList<Card> hand)
+    public DoublePaire (ArrayList<Card> hand) throws IllegalArgumentException
     {
         super(hand);
+
+        if (hand == null) throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
+        if (strongPaire == null) throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
+        if (weakPaire == null) throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
 
         Card tab[] = FindDoublePaire(hand);
 
@@ -48,13 +52,19 @@ public class DoublePaire extends Combination
         this.setValue(2);
     }
 
-    public static boolean isTypeOf (ArrayList<Card> cards)
+    public static boolean isTypeOf (ArrayList<Card> cards) throws IllegalArgumentException
     {
+        if (cards == null) throw new IllegalArgumentException("Parameter is null");
+        if (cards.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + cards.size() + " != 5");
+
         return FindDoublePaire(cards) != null;
     }
 
-    public static Card[] FindDoublePaire (ArrayList<Card> hand)
+    public static Card[] FindDoublePaire (ArrayList<Card> hand) throws IllegalArgumentException
     {
+        if (hand == null) throw new IllegalArgumentException("Parameter is null");
+        if (hand.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + hand.size() + " != 5");
+
         int[] tab = new int[15];
         int compteur = 0;
         Card returntab[] = new Card[2];
@@ -101,8 +111,10 @@ public class DoublePaire extends Combination
     }
 
     @Override
-    public int compareTo (Combination o)
+    public int compareTo (Combination o) throws IllegalArgumentException
     {
+        if (o == null) throw new IllegalArgumentException("Parameter is null");
+
         int valueCompare = super.compareTo(o);
         if (valueCompare != 0) return valueCompare;
 

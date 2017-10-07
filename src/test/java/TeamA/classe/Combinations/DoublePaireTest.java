@@ -25,51 +25,56 @@ import static org.junit.Assert.*;
 
 public class DoublePaireTest
 {
-    private ArrayList<Card> obj1, obj2, obj3, obj4, obj5, obj6;
+    private ArrayList<Card> obj1, obj2, obj3, obj4, obj5, obj6, obj7;
 
     @Before
-    public void init ()
-    {
+    public void init () {
         obj1 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                             new Card(8, "Co"),
-                                             new Card(8, "Tr"),
-                                             new Card(2, "Pi"),
-                                             new Card(4, "Pi")));
+                new Card(8, "Co"),
+                new Card(8, "Tr"),
+                new Card(2, "Pi"),
+                new Card(4, "Pi")));
 
         //Obj2 < Obj1
         obj2 = new ArrayList<>(Arrays.asList(new Card(3, "Ca"),
-                                             new Card(3, "Co"),
-                                             new Card(7, "Tr"),
-                                             new Card(7, "Pi"),
-                                             new Card(4, "Pi")));
+                new Card(3, "Co"),
+                new Card(7, "Tr"),
+                new Card(7, "Pi"),
+                new Card(4, "Pi")));
 
         //Obj3 = Obj1
         obj3 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                             new Card(4, "Co"),
-                                             new Card(2, "Pi"),
-                                             new Card(8, "Tr"),
-                                             new Card(8, "Pi")));
+                new Card(4, "Co"),
+                new Card(2, "Pi"),
+                new Card(8, "Tr"),
+                new Card(8, "Pi")));
 
         //Simple Paire
         obj4 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                             new Card(4, "Co"),
-                                             new Card(8, "Tr"),
-                                             new Card(2, "Pi"),
-                                             new Card(7, "Pi")));
+                new Card(4, "Co"),
+                new Card(8, "Tr"),
+                new Card(2, "Pi"),
+                new Card(7, "Pi")));
 
         //Brelan
         obj5 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                             new Card(4, "Co"),
-                                             new Card(8, "Tr"),
-                                             new Card(2, "Pi"),
-                                             new Card(2, "Pi")));
+                new Card(4, "Co"),
+                new Card(8, "Tr"),
+                new Card(2, "Pi"),
+                new Card(2, "Pi")));
 
         // Carré
         obj6 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
-                                             new Card(2, "Co"),
-                                             new Card(2, "Tr"),
-                                             new Card(2, "Pi"),
-                                             new Card(7, "Pi")));
+                new Card(2, "Co"),
+                new Card(2, "Tr"),
+                new Card(2, "Pi"),
+                new Card(7, "Pi")));
+
+        obj7 = new ArrayList<>(Arrays.asList(new Card(5, "Ca"),
+                new Card(4, "Co"),
+                new Card(4, "Co"),
+                new Card(8, "Pi"),
+                new Card(8, "Pi")));
     }
 
     @Test
@@ -81,6 +86,45 @@ public class DoublePaireTest
         assertFalse(dp.getRestOfCards().contains(dp.getStrongPaire())); // on s'assure que la paire forte n'est plus dans le reste
         assertFalse(dp.getRestOfCards().contains(dp.getWeakPaire())); // on s'assure que la paire faible n'est plus dans la main
     }
+    @Test
+    public void constructor_Right ()
+    {
+        DoublePaire doublepaire = new DoublePaire(obj1);
+        assertEquals(new Card(8, "Ca"), doublepaire.getStrongPaire());
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_EmptyList ()
+    {
+        DoublePaire doublePaire = new DoublePaire(new ArrayList<Card>());
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_NullParam ()
+    {
+        DoublePaire doublePaire = new DoublePaire(null);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_WrongSize ()
+    {
+        //Here the size is 6 > 5
+        DoublePaire doublePaire = new DoublePaire(new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
+                new Card(3, "Co"),
+                new Card(8, "Co"),
+                new Card(5, "Pi"),
+                new Card(7, "Tr"),
+                new Card(5, "Ca"))));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_WrongCards ()
+    {
+       DoublePaire doublepaire = new DoublePaire(obj7);
+    }
+    //endregion ===========================================//
+
+    //region //============== isTypeOf (x4) ===============//
 
     @Test
     public void isTypeOf ()
@@ -91,6 +135,32 @@ public class DoublePaireTest
         assertFalse(DoublePaire.isTypeOf(obj6)); // carré
     }
 
+    @Test (expected = IllegalArgumentException.class)
+    public void isTypeOf_EmptyList ()
+    {
+        DoublePaire.isTypeOf(new ArrayList<Card>());
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void isTypeOf_NotGoodSize ()
+    {
+        //Here the size is 6 > 5
+        DoublePaire.isTypeOf(new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
+                new Card(3, "Co"),
+                new Card(8, "Co"),
+                new Card(5, "Pi"),
+                new Card(7, "Tr"),
+                new Card(5, "Ca"))));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void isTypeOf_NullParam ()
+    {
+        DoublePaire.isTypeOf(null);
+    }
+    //endregion ===========================================//
+
+    //region //============== compareTo (x2) ==============//
     @Test
     public void compareTo ()
     {
@@ -102,11 +172,21 @@ public class DoublePaireTest
         assertEquals(-1, dp2.compareTo(dp1));
         assertEquals(0, dp1.compareTo(dp3));
     }
+    @Test (expected = IllegalArgumentException.class)
+    public void compareTo_NullParam ()
+    {
+        DoublePaire doublePaire = new DoublePaire(obj1);
 
+        doublePaire.compareTo(null);
+    }
+    //endregion ===========================================//
+
+    //region //================= toString =================//
     @Test
     public void testToString ()
     {
         DoublePaire doublePaire = new DoublePaire(obj1);
         assertEquals("DoublePaire avec paire de 8Ca et de 2Ca", doublePaire.toString());
     }
+    //endregion ===========================================//
 }
