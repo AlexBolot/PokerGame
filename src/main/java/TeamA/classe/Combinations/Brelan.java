@@ -22,10 +22,12 @@ public class Brelan extends Combination
 {
     private Card triplet;
 
-    public Brelan (ArrayList<Card> hand)
+    public Brelan (ArrayList<Card> hand) throws IllegalArgumentException
     {
         super(hand);
+
         triplet = FindBrelan(hand);
+        if (triplet == null) throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
 
         //noinspection unchecked
         ArrayList<Card> reducedHand = (ArrayList<Card>) hand.clone();
@@ -38,8 +40,11 @@ public class Brelan extends Combination
         this.setValue(3);
     }
 
-    public static Card FindBrelan (ArrayList<Card> hand)
+    public static Card FindBrelan (ArrayList<Card> hand) throws IllegalArgumentException
     {
+        if (hand == null) throw new IllegalArgumentException("Parameter is null");
+        if (hand.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + hand.size() + " != 5");
+
         int[] tab = new int[15];
         Card carteBrelan = null;
 
@@ -63,8 +68,11 @@ public class Brelan extends Combination
         return triplet;
     }
 
-    public static boolean isTypeOf (ArrayList<Card> cards)
+    public static boolean isTypeOf (ArrayList<Card> cards) throws IllegalArgumentException
     {
+        if (cards == null) throw new IllegalArgumentException("Parameter is null");
+        if (cards.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + cards.size() + " != 5");
+
         return FindBrelan(cards) != null;
     }
 
@@ -74,8 +82,10 @@ public class Brelan extends Combination
     }
 
     @Override
-    public int compareTo (Combination o)
+    public int compareTo (Combination o) throws IllegalArgumentException
     {
+        if (o == null) throw new IllegalArgumentException("Parameter is null");
+
         int valueCompare = super.compareTo(o);
         if (valueCompare != 0) return valueCompare;
 

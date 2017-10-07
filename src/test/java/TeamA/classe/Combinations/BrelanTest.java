@@ -86,7 +86,47 @@ public class BrelanTest
         assertEquals(2, brelan.getRestOfCards().size()); // on test si les cartes on bien était supprimé de la main
         assertFalse(brelan.getRestOfCards().contains(brelan.getTriplet())); // on s'assure que la carte triple n'est plus dans le reste
     }
+    //region //============= Constructor (x5) =============//
 
+    @Test
+    public void constructor_Right ()
+    {
+        Brelan brelan = new Brelan(obj1);
+        assertEquals(new Card(8, "Ca"), brelan.getTriplet());
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_EmptyList ()
+    {
+        Brelan brelan = new Brelan(new ArrayList<Card>());
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_NullParam ()
+    {
+        Brelan brelan = new Brelan(null);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_WrongSize ()
+    {
+        //Here the size is 6 > 5
+        Brelan brelan = new Brelan(new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
+                new Card(3, "Co"),
+                new Card(8, "Co"),
+                new Card(5, "Pi"),
+                new Card(7, "Tr"),
+                new Card(5, "Ca"))));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_WrongCards ()
+    {
+        Brelan brelan = new Brelan(obj6);
+    }
+    //endregion ===========================================//
+
+    //region //============== isTypeOf (x4) ===============//
     @Test
     public void isTypeOf () throws Exception
     {
@@ -97,7 +137,32 @@ public class BrelanTest
         assertFalse(Brelan.isTypeOf(obj5));
         assertFalse(Brelan.isTypeOf(obj6));
     }
+    @Test (expected = IllegalArgumentException.class)
+    public void isTypeOf_EmptyList ()
+    {
+        Brelan.isTypeOf(new ArrayList<Card>());
+    }
 
+    @Test (expected = IllegalArgumentException.class)
+    public void isTypeOf_NotGoodSize ()
+    {
+        //Here the size is 6 > 5
+        Brelan.isTypeOf(new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
+                new Card(3, "Co"),
+                new Card(8, "Co"),
+                new Card(5, "Pi"),
+                new Card(7, "Tr"),
+                new Card(5, "Ca"))));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void isTypeOf_NullParam ()
+    {
+        Brelan.isTypeOf(null);
+    }
+    //endregion ===========================================//
+
+    //region //============== compareTo (x2) ==============//
     @Test
     public void compareTo () throws Exception
     {
@@ -109,7 +174,14 @@ public class BrelanTest
         assertEquals(-1, brelan2.compareTo(brelan1));
         assertEquals(0, brelan1.compareTo(brelan3));
     }
+    @Test (expected = IllegalArgumentException.class)
+    public void compareTo_NullParam ()
+    {
+        Brelan brelan = new Brelan(obj1);
 
+        brelan.compareTo(null);
+    }
+    //region //================= toString =================//
     @Test
     public void testToString() {
         Brelan b8 = new Brelan(obj1);
