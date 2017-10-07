@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static junit.framework.TestCase.assertFalse;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /*................................................................................................................................
@@ -30,6 +31,7 @@ public class QuinteFlushTest {
     private ArrayList<Card> cards2;
     private ArrayList<Card> cards5Mixed;
     private ArrayList<Card> cardsPair2;
+    private ArrayList<Card> tooManyCards;
 
     @Before
     public void init() {
@@ -54,21 +56,65 @@ public class QuinteFlushTest {
                 new Card(8, "Co")));
         cardsPair2 = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
                 new Card(4, "Co"),
-                new Card(2, "Pi"),
+                new Card(3, "Pi"),
                 new Card(5, "Tr"),
                 new Card(2, "Pi")));
-
+        tooManyCards = (ArrayList<Card>) cards5Mixed.clone();
+        tooManyCards.add(new Card(3, "Tr"));
     }
 
+    //region// Constructor //
     @Test
-    public void testIsTypeOf() {
+    public void constructor_Right() {
+        QuinteFlush flush5 = new QuinteFlush(card5Order);
+        assertEquals(new Card(5, "Tr"), flush5.getStart());
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+
+    public void constructor_Empty() {
+        QuinteFlush flush5 = new QuinteFlush(new ArrayList<Card>());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void constructor_null() {
+        QuinteFlush flush5 = new QuinteFlush(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void constructor_WrongSize() {
+
+        QuinteFlush flush5 = new QuinteFlush(tooManyCards);
+    }
+
+    //endregion//
+    //region// isTypeOf  //
+    @Test
+    public void isTypeOf_Right() {
         assertTrue(QuinteFlush.isTypeOf(cards2));
         assertFalse(QuinteFlush.isTypeOf(cardsPair2));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void isTypeOf_wrongSize() {
+        QuinteFlush.isTypeOf(tooManyCards);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void isTypeOf_empty() {
+        QuinteFlush.isTypeOf(new ArrayList<Card>());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void isTypeOf_null() {
+        QuinteFlush.isTypeOf(null);
+    }
+
+    //endregion//  //
+
+    // region // CompareTo //
     @Test
-    public void testCompareTo() throws Exception {
+    public void compareTo_right() throws Exception {
 
         QuinteFlush flush5 = new QuinteFlush(
                 card5Order);
@@ -81,5 +127,24 @@ public class QuinteFlushTest {
         Assert.assertEquals(-1, flush2.compareTo(flush5));
         // flush5 = flush5Co
         Assert.assertEquals(0, flush5.compareTo(flush5Co));
+        // flush > pair
+        assertEquals(1, flush2.compareTo(new Paire(cardsPair2)));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void compareTo_null() {
+        QuinteFlush flush5 = new QuinteFlush(
+                card5Order);
+        flush5.compareTo(null);
+    }
+
+
+    //endregion
+    //region // toString //
+    public void toStringTest() {
+        QuinteFlush quiteFlush = new QuinteFlush(cards5Mixed);
+        assertEquals("Quite Flush qui commence à 5", quiteFlush.toString());
+
+    }
+    //endregion
 }
