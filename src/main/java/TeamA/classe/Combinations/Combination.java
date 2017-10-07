@@ -15,13 +15,13 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 05/10/17 11:52
+ . Last Modified : 07/10/17 20:12
  ...............................................................................................................................*/
 
 abstract public class Combination implements Comparable<Combination>
 {
     private ArrayList<Card> restOfCards = new ArrayList<>();
-    private int    value;
+    private int value;
 
     public Combination (ArrayList<Card> restOfCards)
     {
@@ -48,8 +48,11 @@ abstract public class Combination implements Comparable<Combination>
         this.value = value;
     }
 
-    public Card gethighestcard (ArrayList<Card> cards)
+    public Card gethighestcard (ArrayList<Card> cards) throws IllegalArgumentException
     {
+        if (cards == null) throw new IllegalArgumentException("Parameter is null");
+        if (cards.isEmpty()) throw new IllegalArgumentException("List given in parameter is empty");
+
         Card highest = cards.get(0);
 
         for (Card C : cards)
@@ -61,8 +64,10 @@ abstract public class Combination implements Comparable<Combination>
     }
 
     @Override
-    public int compareTo (Combination o)
+    public int compareTo (Combination o) throws IllegalArgumentException
     {
+        if (o == null) throw new IllegalArgumentException("Parameter is null");
+
         return Integer.compare(getValue(), o.getValue());
     }
 }
