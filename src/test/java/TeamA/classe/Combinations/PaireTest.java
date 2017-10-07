@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 22:56
+ . Last Modified : 07/10/17 21:45
  ...............................................................................................................................*/
 
 public class PaireTest
@@ -156,6 +156,6 @@ public class PaireTest
     @Test
     public void testToString() {
         Paire p7 = new Paire(cards7pair);
-        assertEquals("Paire de 7Ca", p7.toString());
+        assertEquals("Paire de 7", p7.toString());
     }
 }

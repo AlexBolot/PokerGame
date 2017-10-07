@@ -15,7 +15,7 @@ import java.util.ArrayList;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 22:35
+ . Last Modified : 07/10/17 21:49
  ...............................................................................................................................*/
 
 public class Carre extends Combination
@@ -97,7 +97,7 @@ public class Carre extends Combination
     public String toString() {
         StringBuilder sb = new StringBuilder(this.getClass().getSimpleName());
         sb.append(" de ");
-        sb.append(this.getQuartet());
+        sb.append(this.getQuartet().getStringValue());
         return sb.toString();
     }
 }

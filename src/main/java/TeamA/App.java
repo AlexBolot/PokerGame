@@ -16,7 +16,7 @@ import static TeamA.utils.Parser.readCards;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 23:16
+ . Last Modified : 07/10/17 22:01
  ...............................................................................................................................*/
 
 /**
@@ -50,7 +50,7 @@ public class App
                 break;
 
             case -1:
-                System.out.println("La main 2 est gagnante avec " + comb2.getClass().getSimpleName());
+                System.out.println("La main 2 est gagnante avec " + comb2.toString());
                 break;
 
             case 0:

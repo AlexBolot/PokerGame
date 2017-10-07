@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 21:44
+ . Last Modified : 07/10/17 21:45
  ...............................................................................................................................*/
 
 public class SuiteTest
@@ -186,7 +186,7 @@ public class SuiteTest
     {
         Suite suite = new Suite(cards5start);
 
-        assertEquals("Suite qui commence à 5Ca", suite.toString());
+        assertEquals("Suite qui commence à 5", suite.toString());
     }
     //endregion ===========================================//
 }

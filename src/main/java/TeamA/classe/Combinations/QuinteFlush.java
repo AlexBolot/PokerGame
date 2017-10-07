@@ -17,7 +17,7 @@ import static TeamA.classe.Combinations.Suite.FindSuite;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 21:45
+ . Last Modified : 07/10/17 21:50
  ...............................................................................................................................*/
 
 public class QuinteFlush extends Combination
@@ -67,6 +67,6 @@ public class QuinteFlush extends Combination
     }
     @Override
     public String toString () {
-        return this.getClass().getSimpleName() + " qui commence à " + this.getStart();
+        return this.getClass().getSimpleName() + " qui commence à " + this.getStart().getStringValue();
     }
 }

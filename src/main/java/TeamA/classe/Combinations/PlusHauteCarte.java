@@ -16,7 +16,7 @@ import java.util.Collections;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 21:16
+ . Last Modified : 07/10/17 21:50
  ...............................................................................................................................*/
 
 @SuppressWarnings ("unchecked")
@@ -57,6 +57,6 @@ public class PlusHauteCarte extends Combination
 
     public String toString ()
     {
-        return this.getClass().getSimpleName() + " avec plus haute carte : " + gethighestcard(getRestOfCards());
+        return this.getClass().getSimpleName() + " avec plus haute carte : " + gethighestcard(getRestOfCards()).getStringValue();
     }
 }
