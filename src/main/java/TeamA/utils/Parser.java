@@ -4,7 +4,6 @@ import TeamA.classe.Card;
 import TeamA.classe.Hand;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*................................................................................................................................
@@ -18,7 +17,7 @@ import java.util.Scanner;
  . -> Grégoire Peltier
  . -> Théos Mariani
  .
- . Last Modified : 06/10/17 23:14
+ . Last Modified : 03/10/17 18:21
  ...............................................................................................................................*/
 
 public abstract class Parser
@@ -28,14 +27,14 @@ public abstract class Parser
     public static Hand readCards ()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez 5 cartes :");
+        System.out.println(
+                "Entrez 5 cartes ");
 
         String line = sc.nextLine();
 
         try
         {
-            return parseCards(line);
-        }
+        return parseCards(line);}
         catch (IllegalArgumentException iae)
         {
             printError(iae.getMessage());
@@ -50,16 +49,17 @@ public abstract class Parser
 
         if (stringCardsArray.length != 5)
             throw new IllegalArgumentException("Vous avez saisi " + stringCardsArray.length + " Carte(s), veuillez en saisir 5");
-        try
-        {
+        try {
             return new Hand(getCard(stringCardsArray));
         }
         catch (IllegalArgumentException iae)
-        {
-            printError(iae.getMessage());
-            return readCards();
-        }
+            {
+                printError(iae.getMessage());
+                return readCards();
+            }
     }
+
+
 
     private static ArrayList<Card> getCard (String[] stringCardsArray)
     {
@@ -108,7 +108,7 @@ public abstract class Parser
                 }
             }
 
-            if (!Arrays.asList("Pi", "Ca", "Co", "Tr").contains(color))
+            if (!color.equals("Pi") && !color.equals("Co") && !color.equals("Ca") && !color.equals("Tr"))
                 throw new IllegalArgumentException(color + "n'est pas une couleur existante dans le Poker.");
 
             Card card = new Card(intVal, color);
@@ -123,7 +123,7 @@ public abstract class Parser
 
     private static void printError (String message)
     {
-        while (typedCards.size() % 5 != 0)
+        while (typedCards.size()%5!=0)
         {
             typedCards.remove(typedCards.size() - 1);
         }
