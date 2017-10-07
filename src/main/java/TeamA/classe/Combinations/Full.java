@@ -43,19 +43,27 @@ public class Full extends Combination
         this.triplet = triplet;
     }
 
-    public Full (ArrayList<Card> hand)
+    public Full(ArrayList<Card> hand) throws IllegalArgumentException
     {
+
         super(hand);
         Card[] cards = FindFull(hand);
         triplet = cards[0];
         paire = cards[1];
+        if (triplet == null || paire == null)
+            throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
         setValue(6);
     }
-    public static boolean isTypeOf(ArrayList<Card> cards){
+
+    public static boolean isTypeOf(ArrayList<Card> cards) throws IllegalArgumentException {
         return(FindFull(cards)!=null);
     }
 
-    public static Card[] FindFull(ArrayList<Card> cards){
+    public static Card[] FindFull(ArrayList<Card> cards) throws IllegalArgumentException {
+
+        if (cards == null) throw new IllegalArgumentException("Parameter is null");
+        if (cards.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + cards.size() + " != 5");
+
         Card card = null;
         Card cardP = null;
         Card[] tab = new Card[2];
@@ -76,7 +84,8 @@ public class Full extends Combination
     }
 
     @Override
-    public int compareTo(Combination o) {
+    public int compareTo(Combination o) throws IllegalArgumentException {
+        if (o == null) throw new IllegalArgumentException("Parameter is null");
         int combCompare = super.compareTo(o);
         if (combCompare != 0) return combCompare;
         Full otherFull = (Full) o;

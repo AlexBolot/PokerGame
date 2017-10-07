@@ -21,10 +21,11 @@ import java.util.ArrayList;
 public class Paire extends Combination {
     private Card paire;
 
-    public Paire (ArrayList<Card> hand) {
+    public Paire(ArrayList<Card> hand) throws IllegalArgumentException {
         super(hand);
         paire = FindPaire(hand);
-
+        if (paire == null)
+            throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
         //noinspection unchecked
         ArrayList<Card> reducedHand = (ArrayList<Card>) hand.clone();
 
@@ -36,11 +37,13 @@ public class Paire extends Combination {
         this.setValue(1);
     }
 
-    public static boolean isTypeOf (ArrayList<Card> cards) {
+    public static boolean isTypeOf(ArrayList<Card> cards) throws IllegalArgumentException {
         return FindPaire(cards) != null;
     }
 
-    public static Card FindPaire (ArrayList<Card> hand) {
+    static Card FindPaire(ArrayList<Card> hand) throws IllegalArgumentException {
+        if (hand == null) throw new IllegalArgumentException("Parameter is null");
+        if (hand.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + hand.size() + " != 5");
         int[] tab = new int[15];
         int compteur = 0;
         Card card = null;
@@ -70,8 +73,10 @@ public class Paire extends Combination {
     }
 
     @Override
-    public int compareTo (Combination otherComb)
+    public int compareTo(Combination otherComb) throws IllegalArgumentException
     {
+        if (otherComb == null) throw new IllegalArgumentException("Parameter is null");
+
         int valueCompare = super.compareTo(otherComb);
 
         if (valueCompare != 0) return valueCompare;
