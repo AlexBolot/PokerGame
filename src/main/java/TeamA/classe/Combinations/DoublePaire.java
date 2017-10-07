@@ -27,11 +27,9 @@ public class DoublePaire extends Combination
     {
         super(hand);
 
-        if (hand == null) throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
-        if (strongPaire == null) throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
-        if (weakPaire == null) throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
-
         Card tab[] = FindDoublePaire(hand);
+        if (tab == null) throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
+
 
         //noinspection ConstantConditions
         int result = tab[0].compareTo(tab[1]);

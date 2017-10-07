@@ -62,27 +62,6 @@ public class PlusHauteCarteTest
                 new Card(8, "Ca")
         ));
     }
-    @Test (expected = IllegalArgumentException.class)
-    public void constructor_EmptyList ()
-    {
-        PlusHauteCarte phc = new PlusHauteCarte(new ArrayList<Card>());
-    }
-    @Test (expected = IllegalArgumentException.class)
-    public void constructor_NullParam ()
-    {
-        PlusHauteCarte phc = new PlusHauteCarte(null);
-    }
-    @Test (expected = IllegalArgumentException.class)
-    public void constructor_WrongSize ()
-    {
-        //Here the size is 6 > 5
-        PlusHauteCarte phc = new PlusHauteCarte(new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
-                new Card(3, "Co"),
-                new Card(8, "Co"),
-                new Card(5, "Pi"),
-                new Card(7, "Tr"),
-                new Card(5, "Ca"))));
-    }
 
     @Test
     public void compareTo() throws Exception {

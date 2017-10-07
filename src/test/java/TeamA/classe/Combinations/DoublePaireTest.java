@@ -120,7 +120,7 @@ public class DoublePaireTest
     @Test (expected = IllegalArgumentException.class)
     public void constructor_WrongCards ()
     {
-       DoublePaire doublepaire = new DoublePaire(obj7);
+       DoublePaire doublepaire = new DoublePaire(obj5);
     }
     //endregion ===========================================//
 

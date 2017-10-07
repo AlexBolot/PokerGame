@@ -25,8 +25,7 @@ public class PlusHauteCarte extends Combination
     public PlusHauteCarte (ArrayList<Card> hand) throws IllegalArgumentException
     {
         super(hand);
-        if (hand == null) throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
-        if (hand.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + hand.size() + " != 5");
+
 
         setValue(0);
     }
@@ -34,7 +33,6 @@ public class PlusHauteCarte extends Combination
     @Override
     public int compareTo (Combination phc)  throws IllegalArgumentException
     {
-        if (phc == null) throw new IllegalArgumentException("Parameter is null");
 
         int result = super.compareTo(phc);
 
