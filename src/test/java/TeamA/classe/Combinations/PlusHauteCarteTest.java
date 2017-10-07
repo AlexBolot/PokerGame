@@ -22,8 +22,7 @@ import java.util.Arrays;
  . Last Modified : 26/09/17 16:38
  ...............................................................................................................................*/
 
-public class PlusHauteCarteTest
-{
+public class PlusHauteCarteTest {
     private ArrayList<Card> Cards8Max;
     private ArrayList<Card> cards8Max2;
     private ArrayList<Card> cards7Max;
@@ -31,7 +30,7 @@ public class PlusHauteCarteTest
     private ArrayList<Card> cardsPairWrong;
 
     @Before
-    public void init() {
+    public void init () {
 
         Cards8Max = new ArrayList<>(Arrays.asList(new Card(2, "Ca"),
                 new Card(5, "Co"),
@@ -63,6 +62,20 @@ public class PlusHauteCarteTest
         ));
     }
 
+
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void constructor_NullParam () {
+        PlusHauteCarte phc = new PlusHauteCarte(null);
+    }
+
+
+    //endregion ===========================================//
+
+
+
+
     @Test
     public void compareTo() throws Exception {
 
@@ -82,5 +95,12 @@ public class PlusHauteCarteTest
         Assert.assertEquals(-1, max8.compareTo(pair));
         // max8 = max8Bis
         Assert.assertEquals(0, max8.compareTo(max8Bis));
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void compareTo_NullParam ()
+    {
+       PlusHauteCarte phc = new PlusHauteCarte(cards8Max2);
+
+        phc.compareTo(null);
     }
 }
