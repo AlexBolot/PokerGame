@@ -25,7 +25,7 @@ import static org.junit.Assert.*;
 
 public class CouleurTest
 {
-    private ArrayList<Card> obj1, obj2, obj3, obj4, obj5, obj6;
+    private ArrayList<Card> obj1, obj2, obj3, obj4, obj5, obj6,obj7;
 
     @Before
     public void init ()
@@ -76,8 +76,42 @@ public class CouleurTest
                                               new Card(3, "Co"),
                                               new Card(2, "Pi"),
                                               new Card(4, "Pi"))));
+        // Couleur
+        obj7 = (new ArrayList<>(Arrays.asList(new Card(3,"Ca"),
+                                              new Card(6,"Ca"),
+                                              new Card(8,"Ca"),
+                                              new Card(4,"Ca"),
+                                              new Card(9,"Ca"))));
     }
+    @Test
+    public void constructor_Right(){
+        Couleur couleur = new Couleur(obj7);
+        assertEquals(new Card(4,"Ca").getName(),couleur.getColor());
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_EmptyList () {Couleur couleur = new Couleur(new ArrayList<Card>());
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_NullParam(){Couleur couleur = new Couleur(null);}
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_WrongSize (){
+        //Here the size is 6 > 5
+        Couleur couleur= new Couleur(new ArrayList<>(Arrays.asList(
+                new Card(9, "Ca"),
+                new Card(3, "Co"),
+                new Card(8, "Co"),
+                new Card(5, "Pi"),
+                new Card(7, "Tr"),
+                new Card(5, "Ca"))));
+    }
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_WrongCards ()
+    {
+        Couleur couleur = new Couleur(obj6);
+    }
+    //endregion ===========================================//
 
+    //region //============== isTypeOf (x4) ===============//
     @Test
     public void isTypeOf () throws Exception
     {
@@ -88,7 +122,32 @@ public class CouleurTest
         assertFalse(Couleur.isTypeOf(obj5));
         assertFalse(Couleur.isTypeOf(obj6));
     }
+    @Test (expected = IllegalArgumentException.class)
+    public void isTypeOf_EmptyList ()
+    {
+        Suite.isTypeOf(new ArrayList<Card>());
+    }
 
+    @Test (expected = IllegalArgumentException.class)
+    public void isTypeOf_NotGoodSize ()
+    {
+        //Here the size is 6 > 5
+        Suite.isTypeOf(new ArrayList<>(Arrays.asList(new Card(9, "Ca"),
+                new Card(3, "Co"),
+                new Card(8, "Co"),
+                new Card(5, "Pi"),
+                new Card(7, "Tr"),
+                new Card(5, "Ca"))));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void isTypeOf_NullParam ()
+    {
+        Suite.isTypeOf(null);
+    }
+    //endregion ===========================================//
+
+    //region //============== compareTo (x2) ==============//
     @Test
     public void compareTo () throws Exception
     {
@@ -101,10 +160,21 @@ public class CouleurTest
         assertEquals(0, couleur1.compareTo(couleur3));
     }
 
+    @Test (expected = IllegalArgumentException.class)
+    public void compareTo_NullParam ()
+    {
+        Couleur couleur = new Couleur(obj1);
+
+        couleur.compareTo(null);
+    }
+    //endregion ===========================================//
+
+    //region //================= toString =================//
     @Test
     public void testToString ()
     {
         Couleur couleur = new Couleur(obj1);
         assertEquals("Couleur avec carte haute : 8Co", couleur.toString());
     }
+    //endregion ===========================================//
 }

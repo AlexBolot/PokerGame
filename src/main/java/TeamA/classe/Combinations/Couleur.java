@@ -22,20 +22,29 @@ public class Couleur extends Combination
 {
     private String color;
 
-    public Couleur (ArrayList<Card> hand)
+    public Couleur (ArrayList<Card> hand) throws IllegalArgumentException
     {
+        //Has to be done at first line...
         super(hand);
-        this.color = Couleur.FindColor(hand);
+        String color = FindColor(hand);
+        if (color == null) throw new IllegalArgumentException("Parameter does not contain a " + getClass().getSimpleName());
+        this.color = color;
         this.setValue(5);
     }
 
-    public static boolean isTypeOf (ArrayList<Card> hand)
+    public static boolean isTypeOf (ArrayList<Card> hand) throws IllegalArgumentException
     {
+        if (hand == null) throw new IllegalArgumentException("Parameter is null");
+        if (hand.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + hand.size() + " != 5");
+
         return Couleur.FindColor(hand) != null;
     }
 
-    public static String FindColor (ArrayList<Card> hand)
+    public static String FindColor (ArrayList<Card> hand) throws IllegalArgumentException
     {
+        if (hand == null) throw new IllegalArgumentException("Parameter is null");
+        if (hand.size() != 5) throw new IllegalArgumentException("Invalid size of param : " + hand.size() + " != 5");
+
         String color = hand.get(1).getName();
         for (Card c : hand)
         {
@@ -53,8 +62,9 @@ public class Couleur extends Combination
     }
 
     @Override
-    public int compareTo (Combination o)
+    public int compareTo (Combination o) throws IllegalArgumentException
     {
+        if (o == null) throw new IllegalArgumentException("Parameter is null");
         int valueCompare = super.compareTo(o);
         if (valueCompare != 0) return valueCompare;
 
